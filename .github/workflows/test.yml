@@ -1,0 +1,20 @@
+name: Send Slack Message
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 毎日 9:00 (JST) 実行 → UTC 0:00
+  workflow_dispatch:      # 手動実行も可能
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to Slack
+        run: |
+          curl -X POST https://slack.com/api/chat.postMessage \
+            -H "Authorization: Bearer ${{ secrets.SLACK_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "channel": "${{ secrets.SLACK_CHANNEL }}",
+              "text": "test🚀"
+            }'
