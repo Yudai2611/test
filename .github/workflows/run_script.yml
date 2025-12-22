@@ -22,7 +22,7 @@ jobs:
       - name: 1. スクリプト実行 (データ取得)
         env:
           GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }} # Secretからトークンを渡す
-        run: python fetch_repos.py
+        run: python test_a.py
 
       - name: 2. 別のスクリプトで加工 (例)
         run: |
