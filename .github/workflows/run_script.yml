@@ -1,0 +1,31 @@
+name: Fetch and Process Repo List
+
+on:
+  workflow_dispatch: # 手動実行用ボタンを表示
+
+jobs:
+  run-scripts:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Pythonのセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 必要なライブラリのインストール
+        run: pip install requests
+
+      - name: 1. スクリプト実行 (データ取得)
+        env:
+          GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }} # Secretからトークンを渡す
+        run: python fetch_repos.py
+
+      - name: 2. 別のスクリプトで加工 (例)
+        run: |
+          echo "加工スクリプトを実行します..."
+          # ここに加工用スクリプトの実行コマンドを書く
+          # 例: python process_data.py repo_names.txt
