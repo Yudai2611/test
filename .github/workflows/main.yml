@@ -1,0 +1,41 @@
+name: Update au.json from Google Sheets
+
+on:
+  workflow_dispatch: # 手動実行ボタン
+  schedule:
+    - cron: '0 0 * * *' # 毎日 0:00 (UTC) に自動実行したい場合
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 変更したJSONをpushするために必要
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install gspread pandas google-auth-oauthlib
+
+      - name: Run download and convert script
+        env:
+          # GitHubのリポジトリ設定で登録したSecretsを渡す
+          TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+        run: python download-au.py
+
+      - name: Commit and Push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add au.json
+          # 変更がある場合のみコミット
+          git commit -m "chore: auto-update au.json from Google Sheets" || exit 0
+          git push
