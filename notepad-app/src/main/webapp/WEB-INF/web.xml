@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+  <display-name>メモ帳アプリ</display-name>
+
+  <listener>
+    <listener-class>com.notepad.listener.AppInitListener</listener-class>
+  </listener>
+
+  <!-- 文字エンコーディングフィルター -->
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.notepad.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- 認証フィルター -->
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>com.notepad.filter.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- メモAPI -->
+  <servlet>
+    <servlet-name>MemoServlet</servlet-name>
+    <servlet-class>com.notepad.servlet.MemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemoServlet</servlet-name>
+    <url-pattern>/api/memos</url-pattern>
+  </servlet-mapping>
+
+  <!-- 認証API -->
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>com.notepad.servlet.AuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/api/auth/*</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
