@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メモ帳アプリ - 処理フロー図</title>
+  <style>
+    :root {
+      --color-browser: #3498db;
+      --color-db: #8e44ad;
+      --color-filter: #e67e22;
+      --color-dao: #27ae60;
+      --color-servlet: #e74c3c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      line-height: 1.6;
+      padding: 32px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      border-left: 4px solid #3498db;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      margin-top: 40px;
+      padding-left: 12px;
+    }
+
+    /* 3層構造の図 */
+    .tier-diagram {
+      display: flex;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .tier {
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      flex: 1;
+      padding: 16px;
+    }
+
+    .tier-title {
+      border-radius: 4px;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      text-align: center;
+    }
+
+    .tier-presentation .tier-title { background-color: var(--color-browser); }
+    .tier-application .tier-title { background-color: var(--color-servlet); }
+    .tier-data .tier-title { background-color: var(--color-db); }
+
+    .tier-files {
+      font-size: 0.9rem;
+      list-style: none;
+    }
+
+    .tier-files li {
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      padding: 4px 8px;
+    }
+
+    .tier-files code {
+      color: #c0392b;
+      font-size: 0.85rem;
+    }
+
+    /* フローチャート */
+    .flow-container {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin: 16px 0 32px;
+      overflow-x: auto;
+      padding: 24px;
+    }
+
+    .flow {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-start;
+      min-width: 700px;
+    }
+
+    .flow-step {
+      border: 2px solid;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      max-width: 140px;
+      padding: 8px 12px;
+      text-align: center;
+    }
+
+    .flow-step .step-label {
+      font-size: 0.65rem;
+      font-weight: bold;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    .flow-step .step-detail {
+      font-size: 0.75rem;
+      margin-top: 4px;
+      opacity: 0.7;
+    }
+
+    .step-browser { background-color: #ebf5fb; border-color: var(--color-browser); }
+    .step-browser .step-label { color: var(--color-browser); }
+    .step-filter { background-color: #fef5e7; border-color: var(--color-filter); }
+    .step-filter .step-label { color: var(--color-filter); }
+    .step-servlet { background-color: #fdedec; border-color: var(--color-servlet); }
+    .step-servlet .step-label { color: var(--color-servlet); }
+    .step-dao { background-color: #e8f8f5; border-color: var(--color-dao); }
+    .step-dao .step-label { color: var(--color-dao); }
+    .step-db { background-color: #f4ecf7; border-color: var(--color-db); }
+    .step-db .step-label { color: var(--color-db); }
+
+    .flow-arrow {
+      color: #999;
+      font-size: 1.2rem;
+    }
+
+    .flow-arrow-down {
+      color: #999;
+      font-size: 1.2rem;
+      margin: 4px 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .flow-section-label {
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      color: #666;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-top: 4px;
+      padding: 2px 8px;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* レスポンスフロー */
+    .flow-return {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-start;
+      margin-top: 12px;
+      min-width: 700px;
+    }
+
+    .flow-return .flow-step {
+      border-style: dashed;
+      opacity: 0.85;
+    }
+
+    .flow-legend {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .legend-item {
+      align-items: center;
+      display: flex;
+      gap: 4px;
+    }
+
+    .legend-color {
+      border-radius: 3px;
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+    }
+
+    .description {
+      background-color: #fff;
+      border-left: 3px solid #3498db;
+      font-size: 0.9rem;
+      margin: 16px 0;
+      padding: 12px 16px;
+    }
+
+    .file-map {
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 16px 0;
+      width: 100%;
+    }
+
+    .file-map th {
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .file-map td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+    }
+
+    .file-map code {
+      color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <h1>メモ帳アプリ - 処理フロー図</h1>
+  <p class="subtitle">3層アーキテクチャの構造と各操作のリクエスト/レスポンスの流れ</p>
+
+  <!-- 3層構造の概要 -->
+  <h2>3層アーキテクチャ概要</h2>
+  <div class="description">
+    リクエストは必ず「ブラウザ → フィルター → サーブレット → DAO → DB」の順で処理され、
+    レスポンスは逆の順で返る。各層は隣接する層としかやり取りしない。
+  </div>
+  <div class="tier-diagram">
+    <div class="tier tier-presentation">
+      <div class="tier-title">プレゼンテーション層</div>
+      <ul class="tier-files">
+        <li><code>index.html</code> - メモ画面</li>
+        <li><code>login.html</code> - ログイン画面</li>
+        <li><code>app.js</code> - メモ操作のJS</li>
+        <li><code>login.js</code> - ログイン処理のJS</li>
+        <li><code>style.css</code> - 共通スタイル</li>
+      </ul>
+    </div>
+    <div class="tier tier-application">
+      <div class="tier-title">アプリケーション層</div>
+      <ul class="tier-files">
+        <li><code>EncodingFilter</code> - 文字コード設定</li>
+        <li><code>AuthFilter</code> - 認証チェック</li>
+        <li><code>MemoServlet</code> - メモAPI</li>
+        <li><code>AuthServlet</code> - 認証API</li>
+      </ul>
+    </div>
+    <div class="tier tier-data">
+      <div class="tier-title">データ層</div>
+      <ul class="tier-files">
+        <li><code>MemoDao</code> - メモDB操作</li>
+        <li><code>UserDao</code> - ユーザーDB操作</li>
+        <li><code>Memo</code> - メモモデル</li>
+        <li><code>User</code> - ユーザーモデル</li>
+        <li><code>H2 Database</code> - データ保存</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ログインフロー -->
+  <h2>① ログイン処理の流れ</h2>
+  <div class="description">
+    ユーザーがログイン画面でユーザー名とパスワードを入力して送信すると、
+    サーバー側でパスワードをSHA-256でハッシュ化し、DBのハッシュ値と比較する。
+    一致すればセッションにユーザー情報を保存し、以降のリクエストで認証済みとなる。
+  </div>
+  <div class="flow-container">
+    <div class="flow-section-label">▼ リクエスト（ブラウザ → サーバー → DB）</div>
+    <div class="flow">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        login.js<br>fetch POST<br>/api/auth/login
+        <div class="step-detail">{username, password}</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター①</div>
+        EncodingFilter<br>UTF-8を設定
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター②</div>
+        AuthFilter<br>/api/auth/はスキップ
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">サーブレット</div>
+        AuthServlet<br>doPost → handleLogin
+        <div class="step-detail">パスワードをハッシュ化</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        UserDao<br>findByUsername
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>SELECT FROM users
+      </div>
+    </div>
+    <div class="flow-section-label">▲ レスポンス（DB → サーバー → ブラウザ）</div>
+    <div class="flow-return">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        login.js<br>index.htmlへ遷移
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">サーブレット</div>
+        AuthServlet<br>セッション作成
+        <div class="step-detail">{success: true}</div>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        UserDao<br>Userオブジェクト返却
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>ユーザーデータ
+      </div>
+    </div>
+  </div>
+
+  <!-- 認証チェックフロー -->
+  <h2>② ページアクセス時の認証チェック</h2>
+  <div class="description">
+    index.html や /api/memos へのアクセス時、AuthFilter がセッションを確認する。
+    未ログインならリダイレクトまたは401エラーを返す。
+  </div>
+  <div class="flow-container">
+    <div class="flow-section-label">▼ 未ログイン時</div>
+    <div class="flow">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        index.htmlを要求
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター①</div>
+        EncodingFilter<br>UTF-8を設定
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター②</div>
+        AuthFilter<br>セッション確認
+        <div class="step-detail">→ ログインなし！</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-browser">
+        <div class="step-label">リダイレクト</div>
+        login.htmlへ転送
+        <div class="step-detail">サーブレットに到達しない</div>
+      </div>
+    </div>
+    <div class="flow-section-label">▼ ログイン済み時</div>
+    <div class="flow">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        index.htmlを要求
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター①</div>
+        EncodingFilter<br>UTF-8を設定
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター②</div>
+        AuthFilter<br>セッション確認
+        <div class="step-detail">→ ログイン済み！</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">通過</div>
+        index.htmlを返却
+      </div>
+    </div>
+  </div>
+
+  <!-- メモ作成フロー -->
+  <h2>③ メモ新規作成の流れ</h2>
+  <div class="description">
+    「新規作成」ボタンでフォームを開き、タイトルと内容を入力して「保存」を押すと、
+    JavaScript が JSON を POST する。サーブレットが受け取り、DAO経由でDBに保存する。
+  </div>
+  <div class="flow-container">
+    <div class="flow-section-label">▼ リクエスト（ブラウザ → サーバー → DB）</div>
+    <div class="flow">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        app.js<br>fetch POST<br>/api/memos
+        <div class="step-detail">{title, content}</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター①</div>
+        EncodingFilter<br>UTF-8を設定
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター②</div>
+        AuthFilter<br>セッション確認OK
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">サーブレット</div>
+        MemoServlet<br>doPost
+        <div class="step-detail">JSONをMemoに変換</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        MemoDao<br>create
+        <div class="step-detail">INSERT実行</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>INSERT INTO memos
+      </div>
+    </div>
+    <div class="flow-section-label">▲ レスポンス（DB → サーバー → ブラウザ）</div>
+    <div class="flow-return">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        app.js<br>loadMemos()で<br>一覧を再描画
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">サーブレット</div>
+        MemoServlet<br>MemoをJSONに変換
+        <div class="step-detail">ステータス: 201</div>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        MemoDao<br>作成されたMemo返却
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>AUTO_INCREMENTのID
+      </div>
+    </div>
+  </div>
+
+  <!-- メモ一覧取得フロー -->
+  <h2>④ メモ一覧取得の流れ</h2>
+  <div class="description">
+    ページ読み込み時やメモの作成・編集・削除後に自動的にメモ一覧を取得して画面を更新する。
+  </div>
+  <div class="flow-container">
+    <div class="flow-section-label">▼ リクエスト</div>
+    <div class="flow">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        app.js<br>fetch GET<br>/api/memos
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター</div>
+        Encoding + Auth
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">サーブレット</div>
+        MemoServlet<br>doGet
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        MemoDao<br>findAll
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>SELECT * FROM memos<br>ORDER BY updated_at
+      </div>
+    </div>
+    <div class="flow-section-label">▲ レスポンス</div>
+    <div class="flow-return">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        app.js<br>renderMemoList<br>DOMを生成・描画
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">サーブレット</div>
+        MemoServlet<br>List→JSON配列
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        MemoDao<br>List&lt;Memo&gt;返却
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>全メモデータ
+      </div>
+    </div>
+  </div>
+
+  <!-- メモ削除フロー -->
+  <h2>⑤ メモ削除の流れ</h2>
+  <div class="flow-container">
+    <div class="flow">
+      <div class="flow-step step-browser">
+        <div class="step-label">ブラウザ</div>
+        app.js<br>fetch DELETE<br>/api/memos?id=1
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-filter">
+        <div class="step-label">フィルター</div>
+        Encoding + Auth
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">サーブレット</div>
+        MemoServlet<br>doDelete
+        <div class="step-detail">IDをパラメータから取得</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        MemoDao<br>delete
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>DELETE FROM memos<br>WHERE id = ?
+      </div>
+    </div>
+    <div class="flow-section-label">▲ レスポンス: ステータス 204 (No Content) → app.js が loadMemos() で一覧を再取得</div>
+  </div>
+
+  <!-- アプリ起動時の初期化フロー -->
+  <h2>⑥ アプリ起動時の初期化</h2>
+  <div class="description">
+    Tomcat起動時に AppInitListener が呼ばれ、テーブル作成とadminユーザーの初期登録を行う。
+    これは web.xml の &lt;listener&gt; 設定で自動的に実行される。
+  </div>
+  <div class="flow-container">
+    <div class="flow">
+      <div class="flow-step step-servlet">
+        <div class="step-label">Tomcat起動</div>
+        web.xml読み込み
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-servlet">
+        <div class="step-label">リスナー</div>
+        AppInitListener<br>contextInitialized
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        MemoDao.createTable<br>UserDao.createTable
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>CREATE TABLE IF NOT EXISTS
+      </div>
+    </div>
+    <div class="flow-section-label">続いてadminユーザーの初期登録</div>
+    <div class="flow">
+      <div class="flow-step step-servlet">
+        <div class="step-label">リスナー</div>
+        AppInitListener<br>adminが存在するか確認
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-dao">
+        <div class="step-label">DAO</div>
+        UserDao<br>findByUsername("admin")
+        <div class="step-detail">なければcreate実行</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step step-db">
+        <div class="step-label">データベース</div>
+        H2<br>INSERT INTO users<br>(admin, ハッシュ化パスワード)
+      </div>
+    </div>
+  </div>
+
+  <!-- ファイル対応表 -->
+  <h2>ファイルと役割の対応表</h2>
+  <table class="file-map">
+    <thead>
+      <tr>
+        <th>層</th>
+        <th>ファイル</th>
+        <th>役割</th>
+        <th>対応するHTTPメソッド/操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="5">プレゼンテーション層</td>
+        <td><code>index.html</code></td>
+        <td>メモ画面のHTML構造</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><code>login.html</code></td>
+        <td>ログイン画面のHTML構造</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><code>app.js</code></td>
+        <td>メモのCRUD操作、DOM操作</td>
+        <td>GET / POST / PUT / DELETE → /api/memos</td>
+      </tr>
+      <tr>
+        <td><code>login.js</code></td>
+        <td>ログイン送信処理</td>
+        <td>POST → /api/auth/login</td>
+      </tr>
+      <tr>
+        <td><code>style.css / login.css</code></td>
+        <td>画面デザイン</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td rowspan="4">アプリケーション層</td>
+        <td><code>EncodingFilter.java</code></td>
+        <td>全リクエストにUTF-8を適用</td>
+        <td>全リクエスト</td>
+      </tr>
+      <tr>
+        <td><code>AuthFilter.java</code></td>
+        <td>未ログインをブロック</td>
+        <td>全リクエスト（/login.html, /css/, /js/, /api/auth/ は除外）</td>
+      </tr>
+      <tr>
+        <td><code>MemoServlet.java</code></td>
+        <td>メモのREST API</td>
+        <td>doGet / doPost / doPut / doDelete</td>
+      </tr>
+      <tr>
+        <td><code>AuthServlet.java</code></td>
+        <td>ログイン/ログアウトAPI</td>
+        <td>doPost（/login, /logout で振り分け）</td>
+      </tr>
+      <tr>
+        <td rowspan="5">データ層</td>
+        <td><code>Memo.java</code></td>
+        <td>メモのデータ構造を定義</td>
+        <td>id, title, content, createdAt, updatedAt</td>
+      </tr>
+      <tr>
+        <td><code>User.java</code></td>
+        <td>ユーザーのデータ構造を定義</td>
+        <td>id, username, password</td>
+      </tr>
+      <tr>
+        <td><code>MemoDao.java</code></td>
+        <td>メモのDB操作（JDBC）</td>
+        <td>findAll / findById / create / update / delete</td>
+      </tr>
+      <tr>
+        <td><code>UserDao.java</code></td>
+        <td>ユーザーのDB操作（JDBC）</td>
+        <td>findByUsername / create / hashPassword</td>
+      </tr>
+      <tr>
+        <td><code>AppInitListener.java</code></td>
+        <td>起動時のDB初期化</td>
+        <td>テーブル作成、adminユーザー登録</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 凡例 -->
+  <div class="flow-legend">
+    <strong>凡例：</strong>
+    <div class="legend-item"><span class="legend-color" style="background-color: var(--color-browser)"></span> ブラウザ（JS）</div>
+    <div class="legend-item"><span class="legend-color" style="background-color: var(--color-filter)"></span> フィルター</div>
+    <div class="legend-item"><span class="legend-color" style="background-color: var(--color-servlet)"></span> サーブレット</div>
+    <div class="legend-item"><span class="legend-color" style="background-color: var(--color-dao)"></span> DAO</div>
+    <div class="legend-item"><span class="legend-color" style="background-color: var(--color-db)"></span> データベース</div>
+    <div class="legend-item">実線 = リクエスト、破線 = レスポンス</div>
+  </div>
+</body>
+</html>
