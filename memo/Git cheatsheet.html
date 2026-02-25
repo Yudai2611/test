@@ -46,7 +46,7 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* ===== FLOW DIAGRAM (Vertical) ===== */
+  /* ===== FLOW DIAGRAM ===== */
   .flow-section { margin-bottom: 60px; }
 
   .flow-title {
@@ -76,7 +76,6 @@
     border-radius: 16px;
   }
 
-  /* Forward flow (left) */
   .flow-forward, .flow-backward {
     flex: 1;
   }
@@ -136,10 +135,7 @@
     gap: 8px;
   }
 
-  .flow-connector .arrow {
-    font-size: 0.8rem;
-  }
-
+  .flow-connector .arrow { font-size: 0.8rem; }
   .flow-connector.forward .arrow { color: #58a6ff; }
   .flow-connector.backward .arrow { color: #f0883e; }
 
@@ -179,11 +175,13 @@
     height: 3px;
   }
 
-  .workflow-card.daily::before { background: linear-gradient(90deg, #3fb950, #58a6ff); }
+  .workflow-card.daily::before      { background: linear-gradient(90deg, #3fb950, #58a6ff); }
   .workflow-card.new-project::before { background: linear-gradient(90deg, #f0883e, #f7c948); }
   .workflow-card.branch-flow::before { background: linear-gradient(90deg, #bc8cff, #f778ba); }
-  .workflow-card.fix-flow::before { background: linear-gradient(90deg, #f85149, #f0883e); }
-  .workflow-card.team-flow::before { background: linear-gradient(90deg, #58a6ff, #3fb9a0); }
+  .workflow-card.fix-flow::before    { background: linear-gradient(90deg, #f85149, #f0883e); }
+  .workflow-card.team-flow::before   { background: linear-gradient(90deg, #58a6ff, #3fb9a0); }
+  .workflow-card.conflict-flow::before { background: linear-gradient(90deg, #f7c948, #f85149); }
+  .workflow-card.revert-flow::before { background: linear-gradient(90deg, #bc8cff, #58a6ff); }
 
   .workflow-header {
     display: flex;
@@ -203,19 +201,23 @@
     flex-shrink: 0;
   }
 
-  .workflow-card.daily .workflow-icon { background: rgba(63,185,80,0.15); }
-  .workflow-card.new-project .workflow-icon { background: rgba(240,136,62,0.15); }
-  .workflow-card.branch-flow .workflow-icon { background: rgba(188,140,255,0.15); }
-  .workflow-card.fix-flow .workflow-icon { background: rgba(248,81,73,0.15); }
-  .workflow-card.team-flow .workflow-icon { background: rgba(88,166,255,0.15); }
+  .workflow-card.daily .workflow-icon       { background: rgba(63,185,80,0.15); }
+  .workflow-card.new-project .workflow-icon  { background: rgba(240,136,62,0.15); }
+  .workflow-card.branch-flow .workflow-icon  { background: rgba(188,140,255,0.15); }
+  .workflow-card.fix-flow .workflow-icon     { background: rgba(248,81,73,0.15); }
+  .workflow-card.team-flow .workflow-icon    { background: rgba(88,166,255,0.15); }
+  .workflow-card.conflict-flow .workflow-icon { background: rgba(247,201,72,0.15); }
+  .workflow-card.revert-flow .workflow-icon  { background: rgba(188,140,255,0.15); }
 
   .workflow-header h3 { font-size: 1.05rem; font-weight: 700; }
 
-  .workflow-card.daily .workflow-header h3 { color: #3fb950; }
-  .workflow-card.new-project .workflow-header h3 { color: #f0883e; }
-  .workflow-card.branch-flow .workflow-header h3 { color: #bc8cff; }
-  .workflow-card.fix-flow .workflow-header h3 { color: #f85149; }
-  .workflow-card.team-flow .workflow-header h3 { color: #58a6ff; }
+  .workflow-card.daily .workflow-header h3        { color: #3fb950; }
+  .workflow-card.new-project .workflow-header h3   { color: #f0883e; }
+  .workflow-card.branch-flow .workflow-header h3   { color: #bc8cff; }
+  .workflow-card.fix-flow .workflow-header h3      { color: #f85149; }
+  .workflow-card.team-flow .workflow-header h3     { color: #58a6ff; }
+  .workflow-card.conflict-flow .workflow-header h3 { color: #f7c948; }
+  .workflow-card.revert-flow .workflow-header h3   { color: #bc8cff; }
 
   .workflow-desc {
     font-size: 0.8rem;
@@ -258,11 +260,13 @@
     z-index: 1;
   }
 
-  .workflow-card.daily .step-number { background: rgba(63,185,80,0.2); color: #3fb950; border: 1.5px solid #3fb950; }
-  .workflow-card.new-project .step-number { background: rgba(240,136,62,0.2); color: #f0883e; border: 1.5px solid #f0883e; }
-  .workflow-card.branch-flow .step-number { background: rgba(188,140,255,0.2); color: #bc8cff; border: 1.5px solid #bc8cff; }
-  .workflow-card.fix-flow .step-number { background: rgba(248,81,73,0.2); color: #f85149; border: 1.5px solid #f85149; }
-  .workflow-card.team-flow .step-number { background: rgba(88,166,255,0.2); color: #58a6ff; border: 1.5px solid #58a6ff; }
+  .workflow-card.daily .step-number        { background: rgba(63,185,80,0.2);  color: #3fb950; border: 1.5px solid #3fb950; }
+  .workflow-card.new-project .step-number  { background: rgba(240,136,62,0.2); color: #f0883e; border: 1.5px solid #f0883e; }
+  .workflow-card.branch-flow .step-number  { background: rgba(188,140,255,0.2); color: #bc8cff; border: 1.5px solid #bc8cff; }
+  .workflow-card.fix-flow .step-number     { background: rgba(248,81,73,0.2);  color: #f85149; border: 1.5px solid #f85149; }
+  .workflow-card.team-flow .step-number    { background: rgba(88,166,255,0.2); color: #58a6ff; border: 1.5px solid #58a6ff; }
+  .workflow-card.conflict-flow .step-number { background: rgba(247,201,72,0.2); color: #f7c948; border: 1.5px solid #f7c948; }
+  .workflow-card.revert-flow .step-number  { background: rgba(188,140,255,0.2); color: #bc8cff; border: 1.5px solid #bc8cff; }
 
   .step-content { flex: 1; padding-top: 2px; min-width: 0; }
 
@@ -277,6 +281,33 @@
   }
 
   .step-explain { font-size: 0.78rem; color: #8b949e; }
+
+  /* Warning tag inside step */
+  .warn-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: rgba(248,81,73,0.15);
+    color: #f85149;
+    border: 1px solid rgba(248,81,73,0.3);
+    margin-left: 4px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
+
+  .safe-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+    border: 1px solid rgba(63,185,80,0.3);
+    margin-left: 4px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
 
   /* ===== COMMAND CARDS ===== */
   .cards-grid {
@@ -314,11 +345,12 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     padding: 10px 14px;
     background: #0d1117;
     border-radius: 8px;
     border: 1px solid #1a1f26;
+    position: relative;
   }
   .cmd-row:last-child { margin-bottom: 0; }
 
@@ -332,18 +364,34 @@
 
   .cmd-desc { font-size: 0.82rem; color: #8b949e; line-height: 1.5; }
 
-  .card.green .card-icon { background: rgba(63,185,80,0.15); color: #3fb950; }
-  .card.green .card-header h3 { color: #3fb950; }
-  .card.blue .card-icon { background: rgba(88,166,255,0.15); color: #58a6ff; }
-  .card.blue .card-header h3 { color: #58a6ff; }
-  .card.orange .card-icon { background: rgba(240,136,62,0.15); color: #f0883e; }
+  /* badge on cmd-row */
+  .badge {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .badge.danger  { background: rgba(248,81,73,0.15); color: #f85149; border: 1px solid rgba(248,81,73,0.3); }
+  .badge.safe    { background: rgba(63,185,80,0.15);  color: #3fb950; border: 1px solid rgba(63,185,80,0.3); }
+  .badge.new-cmd { background: rgba(88,166,255,0.12); color: #58a6ff; border: 1px solid rgba(88,166,255,0.3); }
+
+  .card.green  .card-icon { background: rgba(63,185,80,0.15);   color: #3fb950; }
+  .card.green  .card-header h3 { color: #3fb950; }
+  .card.blue   .card-icon { background: rgba(88,166,255,0.15);  color: #58a6ff; }
+  .card.blue   .card-header h3 { color: #58a6ff; }
+  .card.orange .card-icon { background: rgba(240,136,62,0.15);  color: #f0883e; }
   .card.orange .card-header h3 { color: #f0883e; }
   .card.purple .card-icon { background: rgba(188,140,255,0.15); color: #bc8cff; }
   .card.purple .card-header h3 { color: #bc8cff; }
-  .card.red .card-icon { background: rgba(248,81,73,0.15); color: #f85149; }
-  .card.red .card-header h3 { color: #f85149; }
-  .card.teal .card-icon { background: rgba(63,185,160,0.15); color: #3fb9a0; }
-  .card.teal .card-header h3 { color: #3fb9a0; }
+  .card.red    .card-icon { background: rgba(248,81,73,0.15);   color: #f85149; }
+  .card.red    .card-header h3 { color: #f85149; }
+  .card.teal   .card-icon { background: rgba(63,185,160,0.15);  color: #3fb9a0; }
+  .card.teal   .card-header h3 { color: #3fb9a0; }
+  .card.yellow .card-icon { background: rgba(247,201,72,0.15);  color: #f7c948; }
+  .card.yellow .card-header h3 { color: #f7c948; }
 
   /* ===== SHORTCUT SECTION ===== */
   .shortcut-bar {
@@ -393,12 +441,20 @@
     border-radius: 2px;
   }
 
-  .section-title.green { color: #3fb950; }
-  .section-title.green::before { background: #3fb950; }
+  .section-title.green  { color: #3fb950; }
+  .section-title.green::before  { background: #3fb950; }
   .section-title.orange { color: #f0883e; }
   .section-title.orange::before { background: #f0883e; }
   .section-title.purple { color: #bc8cff; }
   .section-title.purple::before { background: #bc8cff; }
+
+  /* section divider note */
+  .section-note {
+    font-size: 0.8rem;
+    color: #484f58;
+    margin-bottom: 16px;
+    margin-top: -10px;
+  }
 
   .footer {
     text-align: center;
@@ -413,17 +469,15 @@
 <div class="container">
 
   <h1>Git コマンド チートシート</h1>
-  <p class="subtitle">Visual Guide to Everyday Git Commands</p>
+  <p class="subtitle">Visual Guide to Everyday Git Commands — Business Edition</p>
 
-  <!-- ===== FLOW DIAGRAM (Vertical, Two Columns) ===== -->
+  <!-- ===== FLOW DIAGRAM ===== -->
   <div class="flow-section">
     <div class="flow-title">データの流れ</div>
     <div class="flow-container">
 
-      <!-- Forward: push方向 -->
       <div class="flow-forward">
         <div class="flow-label push">▼ Push（アップロード）</div>
-
         <div class="flow-step">
           <div class="flow-node workspace">
             <span class="emoji">📝</span>
@@ -437,7 +491,6 @@
           <span class="arrow">▼</span>
           <span class="cmd-tag">git add</span>
         </div>
-
         <div class="flow-step">
           <div class="flow-node staging">
             <span class="emoji">📦</span>
@@ -451,7 +504,6 @@
           <span class="arrow">▼</span>
           <span class="cmd-tag">git commit</span>
         </div>
-
         <div class="flow-step">
           <div class="flow-node local">
             <span class="emoji">💻</span>
@@ -465,7 +517,6 @@
           <span class="arrow">▼</span>
           <span class="cmd-tag">git push</span>
         </div>
-
         <div class="flow-step">
           <div class="flow-node remote">
             <span class="emoji">☁️</span>
@@ -477,10 +528,8 @@
         </div>
       </div>
 
-      <!-- Backward: pull方向 -->
       <div class="flow-backward">
         <div class="flow-label pull">▼ Pull（ダウンロード）</div>
-
         <div class="flow-step">
           <div class="flow-node remote">
             <span class="emoji">☁️</span>
@@ -494,7 +543,6 @@
           <span class="arrow">▼</span>
           <span class="cmd-tag">git pull / clone</span>
         </div>
-
         <div class="flow-step">
           <div class="flow-node local">
             <span class="emoji">💻</span>
@@ -508,7 +556,6 @@
           <span class="arrow">▼</span>
           <span class="cmd-tag">git reset</span>
         </div>
-
         <div class="flow-step">
           <div class="flow-node staging">
             <span class="emoji">📦</span>
@@ -522,7 +569,6 @@
           <span class="arrow">▼</span>
           <span class="cmd-tag">git checkout</span>
         </div>
-
         <div class="flow-step">
           <div class="flow-node workspace">
             <span class="emoji">📝</span>
@@ -540,8 +586,10 @@
   <!-- ===== WORKFLOW SECTION ===== -->
   <div class="workflow-section">
     <div class="section-title orange">よく使うコマンドの順番</div>
+    <p class="section-note">新規追加：コンフリクト対応 / push済みの取り消し（revert）</p>
     <div class="workflow-grid">
 
+      <!-- 毎日の基本 -->
       <div class="workflow-card daily">
         <div class="workflow-header">
           <div class="workflow-icon">🔄</div>
@@ -594,6 +642,7 @@
         </div>
       </div>
 
+      <!-- 新規プロジェクト -->
       <div class="workflow-card new-project">
         <div class="workflow-header">
           <div class="workflow-icon">🚀</div>
@@ -632,26 +681,19 @@
           <div class="step-item">
             <div class="step-number">5</div>
             <div class="step-content">
-              <span class="step-cmd">git add .</span>
-              <span class="step-explain">ファイルをステージング</span>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-number">6</div>
-            <div class="step-content">
-              <span class="step-cmd">git commit -m "first commit"</span>
+              <span class="step-cmd">git add . && git commit -m "first commit"</span>
               <span class="step-explain">最初のコミット</span>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-number">7</div>
+            <div class="step-number">6</div>
             <div class="step-content">
               <span class="step-cmd">git remote add origin URL</span>
               <span class="step-explain">GitHubと紐づける</span>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-number">8</div>
+            <div class="step-number">7</div>
             <div class="step-content">
               <span class="step-cmd">git push -u origin main</span>
               <span class="step-explain">初回push</span>
@@ -660,6 +702,7 @@
         </div>
       </div>
 
+      <!-- ブランチ機能開発 -->
       <div class="workflow-card branch-flow">
         <div class="workflow-header">
           <div class="workflow-icon">🌿</div>
@@ -691,26 +734,33 @@
           <div class="step-item">
             <div class="step-number">4</div>
             <div class="step-content">
+              <span class="step-cmd">git rebase main</span>
+              <span class="step-explain">mainの最新変更をブランチに取り込む</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">5</div>
+            <div class="step-content">
               <span class="step-cmd">git push -u origin feature/login</span>
               <span class="step-explain">ブランチをGitHubにpush</span>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-number">5</div>
+            <div class="step-number">6</div>
             <div class="step-content">
               <span class="step-cmd">（GitHubでPull Request作成）</span>
               <span class="step-explain">レビューしてもらう</span>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-number">6</div>
+            <div class="step-number">7</div>
             <div class="step-content">
               <span class="step-cmd">git checkout main → git pull</span>
               <span class="step-explain">mainに戻って最新を取得</span>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-number">7</div>
+            <div class="step-number">8</div>
             <div class="step-content">
               <span class="step-cmd">git branch -d feature/login</span>
               <span class="step-explain">不要なブランチを削除</span>
@@ -719,12 +769,105 @@
         </div>
       </div>
 
+      <!-- コンフリクト対応 ★新規 -->
+      <div class="workflow-card conflict-flow">
+        <div class="workflow-header">
+          <div class="workflow-icon">⚡</div>
+          <h3>コンフリクト対応 <span style="font-size:0.75rem;color:#f7c948;background:rgba(247,201,72,0.12);padding:2px 8px;border-radius:4px;margin-left:4px;">New</span></h3>
+        </div>
+        <div class="workflow-desc">pullやmerge後に競合が発生したときの解消手順。チーム開発では頻出。</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <span class="step-cmd">git pull（コンフリクト発生）</span>
+              <span class="step-explain">CONFLICT と表示されたら競合あり</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <span class="step-cmd">git status</span>
+              <span class="step-explain">競合ファイルを確認（both modified）</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <span class="step-cmd">（エディタでファイルを編集）</span>
+              <span class="step-explain">&lt;&lt;&lt;&lt;&lt; HEAD と ======= を削除して整理</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <span class="step-cmd">git add 競合ファイル名</span>
+              <span class="step-explain">解決済みとしてマーク</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <span class="step-cmd">git commit -m "fix: resolve conflict"</span>
+              <span class="step-explain">マージコミットを作成</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">-</div>
+            <div class="step-content">
+              <span class="step-cmd">git merge --abort</span>
+              <span class="step-explain">解消できない場合はマージを中断して戻す</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- push済みの取り消し ★新規 -->
+      <div class="workflow-card revert-flow">
+        <div class="workflow-header">
+          <div class="workflow-icon">↩️</div>
+          <h3>push済みコミットを取り消す <span style="font-size:0.75rem;color:#58a6ff;background:rgba(88,166,255,0.12);padding:2px 8px;border-radius:4px;margin-left:4px;">New</span></h3>
+        </div>
+        <div class="workflow-desc">共有リポジトリで安全に取り消す方法。reset --hard は使わず revert を使う。</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <span class="step-cmd">git log --oneline</span>
+              <span class="step-explain">取り消したいコミットIDを確認</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <span class="step-cmd">git revert abc1234</span>
+              <span class="step-explain">指定コミットを打ち消すコミットを作成 <span class="safe-tag">✅ 安全</span></span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <span class="step-cmd">git push</span>
+              <span class="step-explain">revertを反映してpush</span>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number" style="font-size:0.6rem;">VS</div>
+            <div class="step-content">
+              <span class="step-cmd">git reset --hard HEAD~1 + git push -f <span class="warn-tag">⚠️ 危険</span></span>
+              <span class="step-explain">チームの履歴を壊すため共有ブランチでは使用禁止</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 間違いを取り消す -->
       <div class="workflow-card fix-flow">
         <div class="workflow-header">
           <div class="workflow-icon">🔧</div>
-          <h3>間違いを取り消す</h3>
+          <h3>ローカルの間違いを取り消す</h3>
         </div>
-        <div class="workflow-desc">「やっぱり戻したい！」時の状況別コマンド。上から順に段階が進む。</div>
+        <div class="workflow-desc">push前の変更を取り消す状況別コマンド。上から順に段階が進む。</div>
         <div class="step-list">
           <div class="step-item">
             <div class="step-number">1</div>
@@ -750,8 +893,8 @@
           <div class="step-item">
             <div class="step-number">4</div>
             <div class="step-content">
-              <span class="step-cmd">git reset --hard HEAD~1</span>
-              <span class="step-explain">commitも変更も完全に消す ⚠️</span>
+              <span class="step-cmd">git reset --hard HEAD~1 <span class="warn-tag">⚠️ push前のみ</span></span>
+              <span class="step-explain">commitも変更も完全に消す。push後は使用禁止</span>
             </div>
           </div>
           <div class="step-item">
@@ -764,6 +907,7 @@
         </div>
       </div>
 
+      <!-- 既存プロジェクト参加 -->
       <div class="workflow-card team-flow">
         <div class="workflow-header">
           <div class="workflow-icon">👥</div>
@@ -814,6 +958,7 @@
 
   <!-- ===== COMMAND CARDS ===== -->
   <div class="section-title green">コマンド一覧</div>
+  <p class="section-note">新規追加：バグ調査 / revert / rebase / リモートブランチ削除</p>
   <div class="cards-grid">
 
     <div class="card green">
@@ -902,6 +1047,11 @@
         <span class="cmd-code">git merge 名前</span>
         <span class="cmd-desc">ブランチを統合</span>
       </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git rebase main</span>
+        <span class="cmd-desc">mainの変更をブランチに取り込む（履歴をきれいに保つ）</span>
+        <span class="badge new-cmd">New</span>
+      </div>
     </div>
 
     <div class="card red">
@@ -919,7 +1069,12 @@
       </div>
       <div class="cmd-row">
         <span class="cmd-code">git reset --soft HEAD~1</span>
-        <span class="cmd-desc">直前のコミットを取り消し</span>
+        <span class="cmd-desc">直前のコミットを取り消し（変更は残る）</span>
+      </div>
+      <div class="cmd-row" style="border-color:rgba(63,185,80,0.2)">
+        <span class="cmd-code">git revert コミットID</span>
+        <span class="cmd-desc">push済みコミットを安全に打ち消す。共有ブランチではこちらを使う。</span>
+        <span class="badge safe">✅ 推奨</span>
       </div>
       <div class="cmd-row">
         <span class="cmd-code">git stash</span>
@@ -941,12 +1096,78 @@
         <span class="cmd-desc">初回push（追跡設定付き）</span>
       </div>
       <div class="cmd-row">
-        <span class="cmd-code">git fetch</span>
-        <span class="cmd-desc">リモートの情報だけ取得</span>
+        <span class="cmd-code">git fetch --prune</span>
+        <span class="cmd-desc">リモートで削除されたブランチをローカルにも反映</span>
+        <span class="badge new-cmd">New</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git push origin --delete ブランチ名</span>
+        <span class="cmd-desc">リモートブランチを削除</span>
+        <span class="badge new-cmd">New</span>
       </div>
       <div class="cmd-row">
         <span class="cmd-code">git push -f origin main</span>
         <span class="cmd-desc">強制push（注意して使う）</span>
+        <span class="badge danger">⚠️ 危険</span>
+      </div>
+    </div>
+
+    <!-- バグ調査 ★新規 -->
+    <div class="card yellow">
+      <div class="card-header">
+        <div class="card-icon">🐛</div>
+        <h3>バグ調査・履歴確認 <span style="font-size:0.7rem;color:#58a6ff;background:rgba(88,166,255,0.12);padding:2px 7px;border-radius:4px;margin-left:4px;">New</span></h3>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git blame ファイル名</span>
+        <span class="cmd-desc">行ごとに最終変更者・コミットを表示。バグの原因調査に必須。</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git show コミットID</span>
+        <span class="cmd-desc">指定コミットの変更内容を詳細表示</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git log --author="名前"</span>
+        <span class="cmd-desc">特定の担当者のコミット履歴だけを表示</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git log --oneline --graph --all</span>
+        <span class="cmd-desc">全ブランチの履歴をグラフで表示</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git bisect start</span>
+        <span class="cmd-desc">バグを二分探索で特定（bisect bad / good と組み合わせて使う）</span>
+      </div>
+    </div>
+
+    <!-- stash ★強化 -->
+    <div class="card teal">
+      <div class="card-header">
+        <div class="card-icon">🗂️</div>
+        <h3>stash（一時退避）<span style="font-size:0.7rem;color:#58a6ff;background:rgba(88,166,255,0.12);padding:2px 7px;border-radius:4px;margin-left:4px;">強化</span></h3>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git stash</span>
+        <span class="cmd-desc">現在の変更を一時退避する</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git stash pop</span>
+        <span class="cmd-desc">最新の退避を復元して削除</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git stash list</span>
+        <span class="cmd-desc">退避一覧を表示（stash@{0}, stash@{1}…）</span>
+        <span class="badge new-cmd">New</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git stash apply stash@{1}</span>
+        <span class="cmd-desc">番号を指定して退避を復元（削除しない）</span>
+        <span class="badge new-cmd">New</span>
+      </div>
+      <div class="cmd-row">
+        <span class="cmd-code">git stash drop stash@{0}</span>
+        <span class="cmd-desc">不要な退避を削除</span>
+        <span class="badge new-cmd">New</span>
       </div>
     </div>
 
@@ -979,9 +1200,17 @@
       <span class="key">git stash pop</span>
       <span class="meaning">退避した変更を復元</span>
     </div>
+    <div class="shortcut-item">
+      <span class="key">git revert HEAD</span>
+      <span class="meaning">直前のコミットを安全に取り消す</span>
+    </div>
+    <div class="shortcut-item">
+      <span class="key">git fetch --prune</span>
+      <span class="meaning">不要なリモートブランチ情報を削除</span>
+    </div>
   </div>
 
-  <p class="footer">Git Cheat Sheet for Everyday Development</p>
+  <p class="footer">Git Cheat Sheet for Everyday Business Development</p>
 
 </div>
 </body>
