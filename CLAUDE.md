@@ -20,8 +20,9 @@
 ├── notepad-app/      # メモ帳アプリ（Java Servlet + H2 + HTML/CSS/JS の3層構造）
 │   ├── CLAUDE.md     # notepad-app固有のルール
 │   └── docs/         # 仕様書・処理フロー図などのドキュメント
-│       ├── spec.md   # 機能仕様書
-│       └── architecture.html  # アーキテクチャ図
+│       ├── spec.md           # 機能仕様書
+│       ├── architecture.md   # アーキテクチャ図（AI参照用・Mermaid記法）
+│       └── architecture.html # アーキテクチャ図（人間閲覧用・ビジュアル）
 ├── templates/        # ドキュメントテンプレート
 │   ├── spec-template.md          # 仕様書テンプレート（第3層）
 │   └── app-claude-template.md    # アプリCLAUDE.mdテンプレート（第2層）
@@ -85,7 +86,7 @@
 |---|---|---|---|
 | **1. 要件定義** | ユーザーの要望をヒアリングし、何を作るか明確にする | ユーザーが要件に合意 | なし（対話で合意） |
 | **2. 仕様策定** | 機能仕様書を作成する | ユーザーが仕様書を承認 | `docs/spec.md` |
-| **3. 設計** | ディレクトリ構成・ファイル分割・技術選定を決定する | ユーザーが設計を承認 | アプリ `CLAUDE.md` + `docs/architecture.html` |
+| **3. 設計** | ディレクトリ構成・ファイル分割・技術選定を決定する | ユーザーが設計を承認 | アプリ `CLAUDE.md` + `docs/architecture.md` + `docs/architecture.html` |
 | **4. 実装** | 仕様書に基づきコードを書く | 全機能が仕様通り動作 | ソースコード |
 | **5. テスト・検証** | 動作確認し、問題があれば修正する | ユーザーが動作を確認 | テスト結果の報告 |
 | **6. ドキュメント整備** | 仕様書・アーキテクチャ図・READMEを最終更新する | ドキュメントと実装が一致 | 更新済みドキュメント |
@@ -248,13 +249,16 @@ Claude: いきなりコードを書き始める
   CLAUDE.md             # アプリ固有ルール
   docs/
     spec.md             # 仕様書
-    architecture.html   # アーキテクチャ図
+    architecture.md     # アーキテクチャ図（AI参照用・Mermaid記法）
+    architecture.html   # アーキテクチャ図（人間閲覧用・ビジュアル）
   src/                  # ソースコード
 
 # ❌ 誤った配置
-/apps/todo-app/                    # ネスト禁止
-/todo-app/（CLAUDE.mdなし）         # アプリCLAUDE.md必須
-/todo-app/（docs/spec.mdなし）      # 仕様書必須
+/apps/todo-app/                       # ネスト禁止
+/todo-app/（CLAUDE.mdなし）            # アプリCLAUDE.md必須
+/todo-app/（docs/spec.mdなし）         # 仕様書必須
+/todo-app/（architecture.mdのみ）      # htmlとセットで作成すること
+/todo-app/（architecture.htmlのみ）    # mdとセットで作成すること
 ```
 
 ### CLAUDE.md の自動更新（必須）
@@ -266,14 +270,51 @@ Claude: いきなりコードを書き始める
 
 ### アーキテクチャドキュメント（必須）
 
-アプリを**新規作成**または**大幅に変更**した場合、以下を作成・更新する:
+アプリを**新規作成**または**大幅に変更**した場合、以下の**2ファイルをセットで**作成・更新する:
+
+#### `architecture.md` — AI参照用（Mermaid記法）
+
+- **配置場所**: `<アプリフォルダ>/docs/architecture.md`
+- **目的**: AIがコード生成・修正時に参照する。トークン効率を優先し、情報を簡潔に記述する
+- **必須コンテンツ**:
+  - アーキテクチャ概要（3層構造などをMermaidの `graph` または `classDiagram` で記述）
+  - 各操作（CRUD等）のリクエスト → 処理 → レスポンスのフロー（Mermaidの `sequenceDiagram` で記述）
+  - ファイルと役割の対応表（Markdownテーブル形式）
+- **記述ルール**: Mermaid記法を使用し、図はコードブロック内に記述する
+
+```markdown
+<!-- ✅ 正しい例 -->
+## ログイン処理フロー
+
+​```mermaid
+sequenceDiagram
+  Browser->>AuthFilter: POST /api/auth/login
+  AuthFilter->>AuthServlet: 通過
+  AuthServlet->>UserDao: findByUsername
+  UserDao->>H2: SELECT FROM users
+  H2-->>UserDao: ユーザーデータ
+  UserDao-->>AuthServlet: Userオブジェクト
+  AuthServlet-->>Browser: {success: true}
+​```
+
+<!-- ❌ 誤った例: フローをテキストのみで記述している -->
+ブラウザからAuthFilterを経由してAuthServletに到達し、UserDaoがDBを検索する。
+```
+
+#### `architecture.html` — 人間閲覧用（ビジュアル）
 
 - **配置場所**: `<アプリフォルダ>/docs/architecture.html`
+- **目的**: ブラウザで開いて視覚的に確認するためのリファレンス資料
 - **必須コンテンツ**:
   - アーキテクチャ概要図
   - 各操作（CRUD等）のリクエスト → 処理 → レスポンスのフロー
   - ファイルと役割の対応表
 - **スタイル要件**: 各層・コンポーネントを**色分け**して視覚的に区別する
+
+#### 2ファイルの内容同期（必須）
+
+- `architecture.md` と `architecture.html` は**常に同じ内容を表現**すること
+- どちらか一方を更新した場合、**同じコミットでもう一方も更新**する
 
 ---
 
@@ -504,7 +545,7 @@ class noteServlet extends HttpServlet {
 
 ```markdown
 <!-- ✅ 正しい例 -->
-- 配置場所: `<アプリフォルダ>/docs/architecture.html`
+- 配置場所: `<アプリフォルダ>/docs/architecture.md`
 - インデント: **スペース4つ**
 
 <!-- ❌ 誤った例: 具体性がない -->
@@ -596,6 +637,8 @@ const userName = 'Alice';
 - [ ] ファイル末尾に改行があるか、末尾空白がないか
 - [ ] コメント・ドキュメントが日本語で記述されているか
 - [ ] フォルダ構成を変更した場合、CLAUDE.md の「リポジトリ構成」を更新したか
+- [ ] アプリを新規作成・大幅変更した場合、`docs/architecture.md` を作成・更新したか
 - [ ] アプリを新規作成・大幅変更した場合、`docs/architecture.html` を作成・更新したか
+- [ ] `architecture.md` と `architecture.html` の内容が一致しているか
 - [ ] 仕様変更があった場合、`docs/spec.md` を同じコミットで更新したか
 - [ ] Markdownファイルを作成・編集した場合、「Markdownドキュメント記述ルール」に従っているか
