@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
