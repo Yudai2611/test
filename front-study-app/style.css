@@ -27,16 +27,19 @@ a:hover {
   background-color: #45a049;
 }
 
-button {
-  padding: 2px 10px;
-  background-color: #506df2;
+.input-area {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
+  padding: 10px 20px;
   font-size: 16px;
-}
-
-button:hover {
-  background-color: #324fd1;
+  cursor: pointer;
 }
