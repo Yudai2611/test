@@ -32,6 +32,7 @@ a:hover {
   gap: 8px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .btn-primary {
@@ -42,4 +43,23 @@ a:hover {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+}
+
+@media (max-width: 600px){
+  body {
+    margin: 20px;
+max-width: 100%;
+  }
+
+  .input-area {
+    flex-direction: column;
+  }
+
+  input {
+    width: 100%;
+   }
+
+   button {
+    width: 100%;
+   }
 }

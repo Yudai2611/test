@@ -2,7 +2,12 @@ const addBtn = document.getElementById('addBtn');
 const input = document.getElementById('input');
 const list = document.getElementById('list');
 
-const tasks = [];
+const saved = localStorage.getItem('tasks');
+const tasks = saved ? JSON.parse(saved) : [];
+
+function save() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
 function render() {
   list.innerHTML = '';
@@ -19,6 +24,7 @@ function render() {
     doneBtn.textContent = '完了';
     doneBtn.addEventListener('click', () => {
       tasks[index].done = !tasks[index].done;
+      save();
       render();
     });
 
@@ -26,6 +32,7 @@ function render() {
     deleteBtn.textContent = '削除';
     deleteBtn.addEventListener('click', () => {
       tasks.splice(index, 1);
+      save();
       render();
     });
 
@@ -39,6 +46,9 @@ addBtn.addEventListener('click', () => {
   const text = input.value;
   if (text === '') return;
   tasks.push({ text: text, done: false });
+  save();
   render();
   input.value = '';
 });
+
+render();
