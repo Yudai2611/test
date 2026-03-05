@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<!-- Oracle -->
+  	<database>
+		<name>jdbc/JavaKitDataSource</name>
+		<jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+		<url>jdbc:oracle:thin:@172.26.14.244:1521:geframe</url>
+		<userID>geframe</userID>
+		<password>geframe</password>
+	</database>
+	<database>
+		<name>jdbc/TestJavaKitDataSource</name>
+		<jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+		<url>jdbc:oracle:thin:@172.26.14.244:1521:geframe</url>
+		<userID>gvetest</userID>
+		<password>gvetest</password>
+	</database>
+
+ 	<!-- MySQL -->
+<!--
+  	<database>
+		<name>jdbc/JavaKitDataSource</name>
+		<jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+		<url>jdbc:mysql://172.26.14.248:3306/geframe</url>
+		<userID>geframe</userID>
+		<password>geframe</password>
+	</database>
+	<database>
+		<name>jdbc/TestJavaKitDataSource</name>
+		<jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+		<url>jdbc:mysql://172.26.14.248:3306/gvetest</url>
+		<userID>gvetest</userID>
+		<password>gvetest</password>
+	</database>
+ -->
+
+<!-- テスト用接続設定 for Oracle -->
+	<!-- wrong destination -->
+	<database>
+		<name>jdbc/TestJavaKitDataSource2</name>
+		<jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+		<url>jdbc:oracle:thin:@172.26.14.244:1521:geframe2</url>
+		<userID>gvetest2</userID>
+		<password>gvetest2</password>
+	</database>
+
+</connections>

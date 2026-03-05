@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+/* Copyright 2011 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA geui.grdialog コンポーネント
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @create 2011/08/28
+ * @author yamashita
+ * @since 3.9.0
+ */
+/***********************************************/
+/* geui.grdialog*/
+/***********************************************/
+.geui-grdialog {}

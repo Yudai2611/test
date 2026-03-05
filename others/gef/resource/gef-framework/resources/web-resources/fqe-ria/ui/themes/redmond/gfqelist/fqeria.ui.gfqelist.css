@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* Copyright 2023 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * fqe-ria fqeria.gfqelsit コンポーネント
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @author oka 2023/10/25
+ * @since 23.10.0
+ */
+/***********************************************/
+/* fqeria.gfqelsit*/
+/***********************************************/
+.temprow {
+	display: none;
+}

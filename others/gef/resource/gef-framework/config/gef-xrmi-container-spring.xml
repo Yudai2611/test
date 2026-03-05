@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          ">
+
+<!-- ###########################
+             gef-xrmi
+     ########################### -->
+
+	<bean name="jp.co.kccs.greenearth.framework.xrmi.serialize.GXmlSerializerFactory" class="jp.co.kccs.greenearth.framework.xrmi.serialize.GXmlSerializerFactoryImpl" scope="singleton">
+		<constructor-arg>
+			<list>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.data.GResultDataSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GBigDecimalSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GBigIntegerSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GBooleanSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GByteArraySerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GByteSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GDateSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GDoubleSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GFloatSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GIntegerSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GListSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GLongSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GLinkedHashMapSerializer" />
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GMapSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GShortSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GStringSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.data.GListDataSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.data.GPageableListSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.data.GRowDataSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.data.GValidateErrorSerializer"/>
+				<!-- GMenu -->
+				<!-- <bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.menu.GMenuSerializer"/> -->
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.menu.GEditableMenuSerializer" />
+				<!-- GRole -->
+				<!--
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.authorization.GRoleSerializer"/>
+				-->
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.authorization.GEditableRoleSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.session.GSessionSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.auth.GUserSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.auth.GCompanySerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.auth.GGroupSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GLocaleSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.resource.error.GErrorMessageSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GFrameworkExceptionSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GApplicationExceptionSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.auth.GAuthenticationExceptionSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GThrowableSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GNullSerializer"/>
+				<bean class="jp.co.kccs.greenearth.framework.xrmi.serialize.GObjectSerializer"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.xrmi.log.log4j.GLogRequestIdPatternFormatter" class="jp.co.kccs.greenearth.framework.xrmi.log.log4j.GLogRequestIdPatternFormatter" scope="singleton" >
+		<constructor-arg value="requestid" />
+	</bean>
+</beans>

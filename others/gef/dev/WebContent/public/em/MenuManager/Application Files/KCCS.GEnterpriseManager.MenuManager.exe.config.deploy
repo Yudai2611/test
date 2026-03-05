@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- Smart Clientの定義-->
+    <section name="smartclient" type="KCCS.GSmartClient.Commons.Configuration.GSmartClientSectionHandler, KCCS.GSmartClient.Commons"/>
+    <!-- Spring.Netの定義 -->
+    <sectionGroup name="spring">
+      <section name="context" type="Spring.Context.Support.ContextHandler, Spring.Core"/>
+      <section name="objects" type="Spring.Context.Support.DefaultSectionHandler, Spring.Core"/>
+      <section name="parsers" type="Spring.Context.Support.NamespaceParsersSectionHandler, Spring.Core"/>
+    </sectionGroup>
+    <!-- Common Loggingの定義 -->
+    <sectionGroup name="common">
+      <section name="logging" type="Common.Logging.ConfigurationSectionHandler, Common.Logging"/>
+    </sectionGroup>
+    <!-- log4netの定義 -->
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler,log4net"/>
+  </configSections>
+
+  <!-- Smart Clientの設定-->
+  <smartclient>
+    <settings>
+      <!-- Core -->
+      <property key="core.Action.Request.UrlContext" value="http://localhost:8080/geframe"/>
+      <property key="core.Action.Request.UrlSuffix" value=".xrmi-action"/>
+      <property key="core.Action.Request.Timeout" value="-1"/>
+      <property key="core.Action.Request.StreamBufferingSize" value="4081"/>
+      <!--<property key="core.Action.Request.Encoding" value="UTF-8" />-->
+      <property key="core.Action.Request.Encoding" value="csWindows31J"/>
+      
+      <!-- resource -->
+      <property key="commons.Resource.DefaultCulture" value="ja-JP"/>
+      <property key="commons.Resource.MessageResource.Cache" value="none"/>
+      <property key="commons.Resource.ErrorMessage.Cache" value="none"/>
+      
+      <!-- file download -->
+      <property key="core.FileDownload.TempDirectory" value="C:\\temp\\geframe\\download"/>
+      <property key="core.FileDownload.TempThresholdSize" value="5120"/>
+      <property key="core.FileDownload.StreamBufferingSize" value="1024"/>
+      
+    </settings>
+  </smartclient>
+  
+  <!-- Spring.Netの設定 -->
+  <spring>
+    <context>
+      <resource uri="file://ge-container-spring.xml"/>
+    </context>
+  </spring>
+
+  <!-- Common Loggingの設定 -->
+  <common>
+    <logging>
+      <factoryAdapter type="Common.Logging.Log4Net.Log4NetLoggerFactoryAdapter, Common.Logging.Log4Net">
+        <arg key="configType" value="INLINE"/>
+        <arg key="configFile" value="filename"/>
+        <!-- log4netの設定を外部ファイルに切り出す場合 -->
+        <!--
+        <arg key="configType" value="FILE" />
+        <arg key="configFile" value="log4net.config" />
+        -->
+      </factoryAdapter>
+    </logging>
+  </common>
+
+  <!-- log4netの設定 -->
+  <log4net>
+    <!-- ログ出力先の定義 -->
+    <!-- ログ出力方法の定義(出力先によって変更します。)
+     RollingFileAppenderは日とサイズでファイルを分割して出力してくれます。-->
+    <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+
+      <!-- ログ・ファイル名の先頭部分 -->
+      <param name="File" value="C:\temp\geframe\smart\geframe"/>
+      <!-- ファイルの追加書き込みを行なうかどうか(通常true) -->
+      <param name="AppendToFile" value="true"/>
+      <!-- 保存するファイル数(数を超えた場合は古いものから削除) -->
+      <param name="MaxSizeRollBackups" value="10"/>
+      <!-- ログファイルの最大サイズ(指定のサイズに達したら新しいログファイルを作成) -->
+      <param name="MaximumFileSize" value="1000KB"/>
+      <!-- ファイルサイズでファイルを分割することを指定 -->
+      <param name="RollingStyle" value="Size"/>
+      <!-- ログ・ファイル名が固定ではないので“false”を指定 -->
+      <param name="StaticLogFileName" value="false"/>
+      <!-- ファイル名の日付部分
+      <param name="DatePattern" value='"."yyyy-MM-dd".log"' />
+      -->
+      <!-- ログ出力時以外はログファイルをロックしないように指定
+      <param name="LockingModel" type="KCCS.GSmartClient.Core.Log.GMultiProcessLock,KCCS.GSmartClient.Core"/>
+      -->
+
+      <!-- ログの書式 -->
+      <layout type="KCCS.GSmartClient.Core.Log.GPatternLayout, KCCS.GSmartClient.Auth">
+        <!-- ログの出力フォーマットを指定します
+　　　　  [日付] [出力レベル] [会社コード] [ユーザID] [メニューID] [スレッドID] メッセージ
+          -->
+        <param name="ConversionPattern" value="[%d]	[%p]	[%a]	[%companycd]	[%userid]	 %m%n"/>
+      </layout>
+    </appender>
+
+
+    <root>
+      <!-- ログレベルの指定 -->
+      <!-- 全てのログレベルを出力 -->
+      <level value="ALL"/>
+    </root>
+
+    <!-- 名前空間ごとに出力条件を設定します。 -->
+    <logger name="KCCS.GSmartClient.Commons">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+    <logger name="KCCS.GSmartClient.Auth">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+    <logger name="KCCS.GSmartClient.Core">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+    <logger name="KCCS.GSmartClient.Forms">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+    <logger name="KCCS.GSmartClient.GC.Forms">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+    <logger name="KCCS.GEnterpriseManager.Common">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+    <logger name="KCCS.GEnterpriseManager.MenuManager">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+    <logger name="KCCS.GEnterpriseManager.RoleManager">
+      <level value="DEBUG"/>
+      <appender-ref ref="RollingFileAppender"/>
+    </logger>
+  </log4net>
+
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.8"/></startup></configuration>

@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+/* Copyright 2011 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA geui.grsystemerror コンポーネント
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @create 2011/06/29
+ * @author H.Nishida
+ * @since 3.9.0
+ */
+/***********************************************/
+/* geui.grsystemerror*/
+/***********************************************/
+.geui-grsystemerrordialog {}
+.ui-dialog .geui-grsystemerrordialog-content-titlebar { background-color: #ff0000; background-image: none; border: medium none #ff0000; }

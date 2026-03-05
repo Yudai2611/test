@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entity phyName="CompanyMaster" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="ParentCD" phyName="ParentCD" type="Varchar" size="5" />
+		<Column name="Name" phyName="Name" type="Varchar" size="255" />
+		<Column name="Status" phyName="Status" type="Numeric" size="1" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCD" />
+	</PrimaryKey>
+</Entity>

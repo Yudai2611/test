@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="Batch_Job_Execution" database="MainDataSource">
+	<Columns>
+		<Column name="JobID" phyName="Job_Execution_ID" type="Long" size="19" />
+		<Column name="Version" phyName="Version" type="Long" size="19" />
+		<Column name="JobInstanceID" phyName="Job_Instance_ID" type="Long" size="32" />
+		<Column name="ExecuteDate" phyName="Create_Time" type="Date" />
+		<Column name="StartDate" phyName="Start_Time" type="Date" />
+		<Column name="EndDate" phyName="End_Time" type="Date" />
+		<Column name="Status" phyName="Status" type="Varchar" size="10" />
+		<Column name="ExitCode" phyName="Exit_Code" type="Varchar" size="2500" />
+		<Column name="ExitMessage" phyName="Exit_Message" type="Varchar" size="2500" />
+		<Column name="LastUpdated" phyName="Last_Updated" type="Date" />
+		<Column name="JobConfigurationLocation" phyName="Job_Configuration_Location" type="Varchar" size="2500" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="JobID" />
+	</PrimaryKey>
+	<ForeignKeys>
+		<ForeignKey name="BatchJobInstanceReference" refEntity="BatchJobInstance">
+			<JoinColumn srcName="JobInstanceID" refName="JobInstanceID" />
+		</ForeignKey>
+		<ForeignKey name="BatchJobExecutionParamsReference" refEntity="BatchJobExecutionParams">
+			<JoinColumn srcName="JobID" refName="JobID" />
+		</ForeignKey>
+		<ForeignKey name="BatchStepExecutionReference" refEntity="BatchStepExecution">
+			<JoinColumn srcName="JobID" refName="JobID" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

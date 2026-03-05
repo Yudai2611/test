@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entity phyName="UserOrganizationMap" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="UserID" phyName="UserID" type="Varchar" size="50" />
+		<Column name="OrganizationID" phyName="OrganizationID" type="Varchar" size="50" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCD" />	
+		<ReferenceColumn refName="UserID" />	
+		<ReferenceColumn refName="OrganizationID" />	
+	</PrimaryKey>
+</Entity>

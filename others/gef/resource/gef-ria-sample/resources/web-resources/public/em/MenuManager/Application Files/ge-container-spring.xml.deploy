@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <description>Smart Client Framework definition.</description>
+
+  <!-- ###########################
+                Commons
+       ########################### -->
+  
+  <!-- GApplicationContext -->
+  <object id="KCCS.GSmartClient.Commons.GApplicationContext"
+          type="KCCS.GSmartClient.Forms.GWindowsApplicationContext, KCCS.GSmartClient.Forms" singleton="true">
+  </object>
+  <!-- GDateFormat -->
+  <object id="KCCS.GSmartClient.Commons.Utils.GDateFormat"
+          type="KCCS.GSmartClient.Commons.Utils.GDateFormatImpl, KCCS.GSmartClient.Commons" singleton="false">
+    <constructor-arg index="0">
+      <list element-type="string">
+        <value>yyyy/MM/dd HH:mm:ss</value>
+        <value>yyyy/MM/dd</value>
+        <value>yyyy-MM-dd HH:mm:ss</value>
+        <value>yyyy-MM-dd</value>
+        <value>yyMMdd HHmmss</value>
+        <value>yyMMdd</value>
+      </list>
+    </constructor-arg>
+  </object>
+  <!-- Message Resource -->
+  <object id="KCCS.GSmartClient.Commons.Resource.Message.GMessageResources.MessageResourceDao"
+          type="KCCS.GSmartClient.Commons.Resource.Message.GMessageResourceCacherDao, KCCS.GSmartClient.Commons" singleton="true" lazy-init="true">
+    <constructor-arg index="0">
+      <object type="KCCS.GSmartClient.Commons.Resource.Message.GLocalMessageResourceDao" singleton="true" lazy-init="true">
+        <constructor-arg index="0" value="/Resource/Message"/>
+      </object>
+    </constructor-arg>
+  </object>
+  <!-- Error Message -->
+  <object id="KCCS.GSmartClient.Commons.Resource.Error.GErrorMessages.ErrorMessageDao"
+          type="KCCS.GSmartClient.Commons.Resource.Error.GErrorMessageCacherDao, KCCS.GSmartClient.Commons" singleton="true" lazy-init="true">
+    <constructor-arg index="0">
+      <object type="KCCS.GSmartClient.Commons.Resource.Error.GLocalErrorMessageDao" singleton="true" lazy-init="true">
+        <constructor-arg index="0" value="/Resource/Error"/>
+      </object>
+    </constructor-arg>
+  </object>
+  <!-- Property Loader -->
+  <object id="KCCS.GSmartClient.Commons.GPropertyLoader"
+          type="KCCS.GSmartClient.Commons.Configuration.GAppConfigLoader, KCCS.GSmartClient.Commons" singleton="true">
+  </object>
+
+    <!-- ###########################
+                    Core
+         ########################### -->
+
+  <!-- GActionInvoker -->
+  <object id="KCCS.GSmartClient.Core.GActionInvoker"
+          type="KCCS.GSmartClient.Core.GActionInvokerImpl, KCCS.GSmartClient.Core" singleton="false">
+    <constructor-arg index="0">
+      <object type="KCCS.GSmartClient.Core.Web.GRequestBuilderImpl, KCCS.GSmartClient.Core" singleton="true"/>
+    </constructor-arg>
+    <constructor-arg index="1">
+      <object type="KCCS.GSmartClient.Core.Web.GResponseParserImpl, KCCS.GSmartClient.Core" singleton="true">
+        <constructor-arg>
+          <dictionary key-type="string" value-type="KCCS.GSmartClient.Core.Web.GResponseParser, KCCS.GSmartClient.Core">
+            <entry key="text/xml">
+              <object type="KCCS.GSmartClient.Core.Web.GXmlResponseParser, KCCS.GSmartClient.Core" singleton="true"/>
+            </entry>
+            <entry key="default">
+              <object type="KCCS.GSmartClient.Core.Web.GFileDownloadResponseParser, KCCS.GSmartClient.Core" singleton="true"/>
+            </entry>
+          </dictionary>
+        </constructor-arg>
+      </object>
+    </constructor-arg>
+  </object>
+
+  <!-- GDownloadFileCreatorFactory -->
+  <object id="KCCS.GSmartClient.Core.Web.GDownloadFileCreatorFactory"
+          type="KCCS.GSmartClient.Core.Web.GDownloadFileCreatorFactoryImpl, KCCS.GSmartClient.Core" singleton="true">
+  </object>
+  <object id="KCCS.GSmartClient.Core.Data.GDownloadFileDataInMemoryStorage"
+	  	  type="KCCS.GSmartClient.Core.Data.GDownloadFileDataInMemoryStorage, KCCS.GSmartClient.Core" singleton="false">
+  </object>
+  <object id="KCCS.GSmartClient.Core.Data.GDownloadFileDataInDiskStorage"
+          type="KCCS.GSmartClient.Core.Data.GDownloadFileDataInDiskStorage, KCCS.GSmartClient.Core" singleton="false">
+  </object>
+  <object id="KCCS.GSmartClient.Core.Web.GDownloadFileCreator_Normal.Memory"
+          type="KCCS.GSmartClient.Core.Web.GNormalDownloadFileCreator, KCCS.GSmartClient.Core" singleton="false">
+    <constructor-arg index="0">
+	  <ref object="KCCS.GSmartClient.Core.Data.GDownloadFileDataInMemoryStorage"/>
+	</constructor-arg>
+  </object>
+  <object id="KCCS.GSmartClient.Core.Web.GDownloadFileCreator_Normal.Disk"
+          type="KCCS.GSmartClient.Core.Web.GNormalDownloadFileCreator, KCCS.GSmartClient.Core" singleton="false">
+    <constructor-arg index="0">
+	  <ref object="KCCS.GSmartClient.Core.Data.GDownloadFileDataInDiskStorage"/>
+    </constructor-arg>
+  </object>
+  <object id="KCCS.GSmartClient.Core.Web.GDownloadFileCreator_Chunked.Disk"
+          type="KCCS.GSmartClient.Core.Web.GChunkedDownloadFileCreator, KCCS.GSmartClient.Core" singleton="false">
+    <constructor-arg index="0">
+	  <ref object="KCCS.GSmartClient.Core.Data.GDownloadFileDataInDiskStorage"/>
+    </constructor-arg>
+  </object>
+
+  <!-- GCookieContainerManager -->
+  <object id="KCCS.GSmartClient.Core.Web.GCookieContainerManager"
+          type="KCCS.GSmartClient.Core.Web.GCookieContainerManagerImpl, KCCS.GSmartClient.Core" singleton="true">
+    <constructor-arg index="0" value="300"/>
+    <constructor-arg index="1" value="20"/>
+    <constructor-arg index="2" value="4096"/>
+  </object>
+  <!-- GParameter -->
+  <object id="KCCS.GSmartClient.Core.GParameter"
+          type="KCCS.GSmartClient.Core.GParameterImpl, KCCS.GSmartClient.Core" singleton="false">
+  </object>
+  <!-- GResultData -->
+  <object id="KCCS.GSmartClient.Core.Data.GResultData"
+          type="KCCS.GSmartClient.Core.Data.GResultDataImpl, KCCS.GSmartClient.Core" singleton="false">
+  </object>
+  <!-- SystemErrorHandler -->
+  <object id="KCCS.GSmartClient.Core.SystemError.GSystemErrorHandler"
+        type="KCCS.GSmartClient.Forms.SystemError.GFormSystemErrorHandler, KCCS.GSmartClient.Forms" singleton="true">
+    <constructor-arg index="0">
+      <list element-type="KCCS.GSmartClient.Core.SystemError.GExceptionPresenterSet, KCCS.GSmartClient.Core">
+        <!-- Sample 
+        <object type="KCCS.GSmartClient.Core.SystemError.GExceptionPresenterSet, KCCS.GSmartClient.Core" singleton="false">
+          <property name="ExceptionName" value="KCCS.GSmartClient.Core.Auth.GAuthenticationException, KCCS.GSmartClient.Auth"/>
+          <property name="PresenterName" value="KCCS.GSmartClient.Sample.AuthErrorDialog, KCCS.GSmartClient.Sample"/>
+        </object>
+        <object type="KCCS.GSmartClient.Core.SystemError.GExceptionPresenterSet, KCCS.GSmartClient.Core" singleton="false">
+          <property name="ExceptionName" value="System.Exception"/>
+          <property name="PresenterName" value="KCCS.GSmartClient.Sample.SystemErrorDialog, KCCS.GSmartClient.Sample"/>
+        </object>
+        -->
+        <!-- EMv3 -->
+        <object type="KCCS.GSmartClient.Core.SystemError.GExceptionPresenterSet, KCCS.GSmartClient.Core" singleton="false">
+          <property name="ExceptionName" value="System.Exception"/>
+          <property name="PresenterName" value="KCCS.GEnterpriseManager.Common.Dialog.GSystemErrorDialog, KCCS.GEnterpriseManager.Common"/>
+        </object>
+      </list>
+    </constructor-arg>
+  </object>
+  <!-- GXmlElementDeserializerFactory -->
+  <object id="KCCS.GSmartClient.Core.Deserialize.GXmlElementDeserializerFactory"
+          type="KCCS.GSmartClient.Core.Deserialize.GXmlElementDeserializerFactoryImpl, KCCS.GSmartClient.Core" singleton="true">
+    <constructor-arg index="0">
+      <dictionary key-type="string"
+                  value-type="KCCS.GSmartClient.Core.Deserialize.GXmlElementDeserializer, KCCS.GSmartClient.Core">
+        <!-- Bigdecimal -->
+        <entry key="java.math.BigDecimal">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GDecimalDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- BigInteger -->
+        <entry key="java.math.BigInteger">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GDecimalDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Boolean -->
+        <entry key="java.lang.Boolean">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GBooleanDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- ByteArray -->
+        <entry key="[B">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GSByteArrayDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Byte -->
+        <entry key="java.lang.Byte">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GSByteDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Locale -->
+        <entry key="java.util.Locale">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GCultureInfoDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Date -->
+        <entry key="java.util.Date">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GLocalDateTimeDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Double -->
+        <entry key="java.lang.Double">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GDoubleDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Float -->
+        <entry key="java.lang.Float">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GSingleDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Integer -->
+        <entry key="java.lang.Integer">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GInt32Deserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- List -->
+        <entry key="java.util.List">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GIListDeserializer, KCCS.GSmartClient.Core"/>
+        </entry>
+        <!-- Long -->
+        <entry key="java.lang.Long">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GInt64Deserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- LinkedHashMap -->
+        <entry key="java.util.LinkedHashMap">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GIOrderedDictionaryDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Map -->
+        <entry key="java.util.Map">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GIDictionaryDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Short -->
+        <entry key="java.lang.Short">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GInt16Deserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- String -->
+        <entry key="java.lang.String">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GStringDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GPageableList -->
+        <entry key="jp.co.kccs.greenearth.framework.data.GPageableList">
+          <object type="KCCS.GSmartClient.Core.Data.Deserialize.GPageableListDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GListData -->
+        <entry key="jp.co.kccs.greenearth.framework.data.GListData">
+          <object type="KCCS.GSmartClient.Core.Data.Deserialize.GListDataDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GResultData -->
+        <entry key="jp.co.kccs.greenearth.framework.data.GResultData">
+          <object type="KCCS.GSmartClient.Core.Data.Deserialize.GResultDataDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GRowData -->
+        <entry key="jp.co.kccs.greenearth.framework.data.GRowData">
+          <object type="KCCS.GSmartClient.Core.Data.Deserialize.GRowDataDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GValidateError -->
+        <entry key="jp.co.kccs.greenearth.framework.data.GValidateError">
+          <object type="KCCS.GSmartClient.Core.Data.Deserialize.GValidateErrorDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GServerException -->
+        <entry key="java.lang.Throwable">
+          <object type="KCCS.GSmartClient.Core.Data.Deserialize.GServerExceptionDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GFrameworkException-->
+        <entry key="jp.co.kccs.greenearth.commons.GFrameworkException">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GFrameworkExceptionDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GApplicationException-->
+        <entry key="jp.co.kccs.greenearth.commons.GApplicationException">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GApplicationExceptionDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- GAuthenticationException-->
+        <entry key="jp.co.kccs.greenearth.framework.auth.GAuthenticationException">
+          <object type="KCCS.GSmartClient.Core.Auth.Deserialize.GAuthenticationExceptionDeserializer, KCCS.GSmartClient.Auth" singleton="true"/>
+        </entry>
+        <!-- GSession -->
+        <entry key="jp.co.kccs.greenearth.framework.session.GSession">
+          <object type="KCCS.GSmartClient.Core.Session.Deserialize.GSessionDeserializer, KCCS.GSmartClient.Auth" singleton="true"/>
+        </entry>
+        <!-- GCompany -->
+        <entry key="jp.co.kccs.greenearth.framework.auth.GCompany">
+          <object type="KCCS.GSmartClient.Core.Auth.Deserialize.GCompanyDeserializer, KCCS.GSmartClient.Auth" singleton="true"/>
+        </entry>
+        <!-- GUser -->
+        <entry key="jp.co.kccs.greenearth.framework.auth.GUser">
+          <object type="KCCS.GSmartClient.Core.Auth.Deserialize.GUserDeserializer, KCCS.GSmartClient.Auth" singleton="true"/>
+        </entry>
+        <!-- GGroup-->
+        <entry key="jp.co.kccs.greenearth.framework.auth.GGroup">
+          <object type="KCCS.GSmartClient.Core.Auth.Deserialize.GGroupDeserializer, KCCS.GSmartClient.Auth" singleton="true"/>
+        </entry>
+        <!-- GRole -->
+        <entry key="jp.co.kccs.greenearth.framework.authorization.GRole">
+          <object type="KCCS.GEnterpriseManager.RoleManager.Deserialize.GEditableRoleDeserializer, KCCS.GEnterpriseManager.RoleManager" singleton="true">
+            <constructor-arg index="0">
+              <ref object="KCCS.GSmartClient.Auth.Authorization.GRoleService"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <!-- GMenu -->
+        <entry key="jp.co.kccs.greenearth.framework.menu.GMenu">
+          <object type="KCCS.GEnterpriseManager.MenuManager.Deserialize.GEditableMenuDeserializer, KCCS.GEnterpriseManager.MenuManager" singleton="true">
+            <constructor-arg index="0">
+              <ref object="KCCS.GSmartClient.Auth.Menu.GMenuService"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <!-- Object -->
+        <entry key="java.lang.Object">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GObjectDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+        <!-- Null -->
+        <entry key="jp.co.kccs.greenearth.framework.xrmi.serialize.GXmlSerializerFactory$Null">
+          <object type="KCCS.GSmartClient.Core.Deserialize.GNullDeserializer, KCCS.GSmartClient.Core" singleton="true"/>
+        </entry>
+      </dictionary>
+    </constructor-arg>
+  </object>
+
+  <!-- GFrameworkService -->
+  <object id="KCCS.GSmartClient.Core.GFrameworkService"
+            type="KCCS.GSmartClient.Core.GFrameworkServiceImpl, KCCS.GSmartClient.Core" singleton="true">
+    <property name="ActionBean" value="jp.co.kccs.greenearth.framework.xrmi.GFrameworkServiceAction"/>
+  </object>
+
+
+  <!-- ###########################
+                 Auth
+       ########################### -->
+
+  <!-- GSessionManager -->
+  <object id="KCCS.GSmartClient.Core.Session.GSessionManager"
+          type="KCCS.GSmartClient.Core.Session.GSessionManagerImpl, KCCS.GSmartClient.Auth" singleton="true">
+    <property name="ActionBean" value="jp.co.kccs.greenearth.framework.xrmi.session.GSynchronizeSessionAction"/>
+  </object>
+  <!-- GSession -->
+  <object id="KCCS.GSmartClient.Core.Session.GSession"
+          type="KCCS.GSmartClient.Core.Session.GSessionImpl, KCCS.GSmartClient.Auth" singleton="false">
+  </object>
+  <!-- GRoleService -->
+  <object id="KCCS.GSmartClient.Auth.Authorization.GRoleService"
+        type="KCCS.GEnterpriseManager.RoleManager.GRoleManagementServiceImpl, KCCS.GEnterpriseManager.RoleManager" singleton="true">
+    <property name="ActionBean" value="jp.co.kccs.greenearth.framework.em.rolemanager.GRoleManagerAction"/>
+  </object>
+  <!-- GMenuService -->
+  <object id="KCCS.GSmartClient.Auth.Menu.GMenuService"
+        type="KCCS.GEnterpriseManager.MenuManager.GMenuManagementServiceImpl, KCCS.GEnterpriseManager.MenuManager" singleton="true">
+    <property name="ActionBean" value="jp.co.kccs.greenearth.framework.em.menumanager.GMenuManagerAction"/>
+  </object>
+
+  <!-- GMenuStarterFactory -->
+  <object id="KCCS.GSmartClient.Auth.Menu.GMenuStarterFactory"
+          type="KCCS.GSmartClient.Auth.Menu.GMenuStarterFactory, KCCS.GSmartClient.Auth" singleton="true">
+    <constructor-arg index="0">
+      <dictionary key-type="string" value-type="KCCS.GSmartClient.Auth.Menu.GMenuStarter, KCCS.GSmartClient.Auth">
+        <entry key="SmartClientItem">
+          <object type="KCCS.GSmartClient.Forms.Menu.GModelessFormMenuStarter, KCCS.GSmartClient.Forms" singleton="true"/>
+          <!--
+          <object type="KCCS.GSmartClient.Forms.Menu.GModalFormMenuStarter, KCCS.GSmartClient.Forms" singleton="true"/>
+          -->
+        </entry>
+      </dictionary>
+    </constructor-arg>
+  </object>
+
+  <!-- ###########################
+                 Forms
+       ########################### -->
+
+  <!-- GControlHandlerFactory -->
+  <object id="KCCS.GSmartClient.Forms.Handler.GControlHandlerFactory"
+          type="KCCS.GSmartClient.Forms.Handler.GControlHandlerFactoryImpl, KCCS.GSmartClient.Forms" singleton="true">
+    <constructor-arg index="0">
+      <dictionary key-type="string"
+                  value-type="KCCS.GSmartClient.Forms.Handler.GControlHandler, KCCS.GSmartClient.Forms">
+        <entry key="System.Windows.Forms.Button">
+          <object type="KCCS.GSmartClient.Forms.Handler.GButtonHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.CheckBox">
+          <object type="KCCS.GSmartClient.Forms.Handler.GCheckBoxHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GBooleanTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.ComboBox">
+          <object type="KCCS.GSmartClient.Forms.Handler.GComboBoxHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GIntTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.DataGridView">
+          <ref object="KCCS.GSmartClient.Forms.Handler.GDataGridViewHandler"/>
+        </entry>
+        <entry key="System.Windows.Forms.DateTimePicker">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDateTimePickerHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDateTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.FlowLayoutPanel">
+          <object type="KCCS.GSmartClient.Forms.Handler.GFlowLayoutPanelHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.Form">
+          <object type="KCCS.GSmartClient.Forms.Handler.GFormHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+<!--
+        <entry key="GrapeCity.Win.Editors.GcCharMask">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcCharMaskHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.Editors.GcDate">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcDateHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDateTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.Editors.GcMask">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMaskHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.Editors.GcNumber">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcNumberHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDecimalTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.Editors.GcTextBox">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcTextBoxHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.GcMultiRow">
+          <ref object="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowHandler"/>
+        </entry>
+-->
+        <entry key="System.Windows.Forms.GroupBox">
+          <object type="KCCS.GSmartClient.Forms.Handler.GGroupBoxHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="KCCS.GSmartClient.Forms.Controls.GListNavigator">
+          <object type="KCCS.GSmartClient.Forms.Handler.GListNavigatorHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="KCCS.GSmartClient.Forms.Controls.GRadioButtonGroup">
+          <object type="KCCS.GSmartClient.Forms.Handler.GRadioButtonGroupHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="KCCS.GSmartClient.Forms.Controls.GValidateErrorDialog">
+          <object type="KCCS.GSmartClient.Forms.Handler.GValidateErrorDialogHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="KCCS.GSmartClient.Forms.Controls.GValidateErrorProvider">
+          <object type="KCCS.GSmartClient.Forms.Handler.GValidateErrorProviderHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.Label">
+          <object type="KCCS.GSmartClient.Forms.Handler.GLabelHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.LinkLabel">
+          <object type="KCCS.GSmartClient.Forms.Handler.GLinkLabelHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.ListBox">
+          <object type="KCCS.GSmartClient.Forms.Handler.GListBoxHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GIntTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.MaskedTextBox">
+          <object type="KCCS.GSmartClient.Forms.Handler.GMaskedTextBoxHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.NumericUpDown">
+          <object type="KCCS.GSmartClient.Forms.Handler.GNumericUpDownHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDecimalTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.Panel">
+          <object type="KCCS.GSmartClient.Forms.Handler.GPanelHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.RadioButton">
+          <object type="KCCS.GSmartClient.Forms.Handler.GRadioButtonHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GBooleanTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.RichTextBox">
+          <object type="KCCS.GSmartClient.Forms.Handler.GRichTextBoxHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.SplitContainer">
+          <object type="KCCS.GSmartClient.Forms.Handler.GSplitContainerHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.SplitterPanel">
+          <object type="KCCS.GSmartClient.Forms.Handler.GSplitterPanelHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.TabControl">
+          <object type="KCCS.GSmartClient.Forms.Handler.GTabControlHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.TabPage">
+          <object type="KCCS.GSmartClient.Forms.Handler.GTabPageHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.TableLayoutPanel">
+          <object type="KCCS.GSmartClient.Forms.Handler.GTableLayoutPanelHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.TextBox">
+          <object type="KCCS.GSmartClient.Forms.Handler.GTextBoxHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.TrackBar">
+          <object type="KCCS.GSmartClient.Forms.Handler.GTrackBarHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GIntTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+      </dictionary>
+    </constructor-arg>
+  </object>
+  <!-- DataGridView -->
+  <object id="KCCS.GSmartClient.Forms.Handler.GDataGridViewHandler"
+    type="KCCS.GSmartClient.Forms.Handler.GDataGridViewHandler, KCCS.GSmartClient.Forms" singleton="true">
+    <constructor-arg index="0">
+      <ref object="KCCS.GSmartClient.Forms.Handler.GDataGridViewRowHandler"/>
+    </constructor-arg>
+  </object>
+  <object id="KCCS.GSmartClient.Forms.Handler.GDataGridViewRowHandler"
+      type="KCCS.GSmartClient.Forms.Handler.GDataGridViewRowHandlerImpl, KCCS.GSmartClient.Forms" singleton="true">
+    <constructor-arg index="0">
+      <dictionary key-type="string"
+                  value-type="KCCS.GSmartClient.Forms.Handler.GComponentHandler, KCCS.GSmartClient.Forms">
+        <entry key="System.Windows.Forms.DataGridViewButtonCell">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDataGridViewButtonCellHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.DataGridViewCheckBoxCell">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDataGridViewCheckBoxCellHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GBooleanTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="KCCS.GSmartClient.Forms.Controls.GDataGridViewClearableTextBoxCell">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDataGridViewClearableTextBoxCellHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.DataGridViewComboBoxCell">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDataGridViewComboBoxCellHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GIntTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+          </object>
+        </entry>
+        <entry key="System.Windows.Forms.DataGridViewLinkCell">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDataGridViewLinkCellHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="KCCS.GSmartClient.Forms.Controls.GDataGridViewIndexCell">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDataGridViewIndexCellHandler, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <entry key="System.Windows.Forms.DataGridViewTextBoxCell">
+          <object type="KCCS.GSmartClient.Forms.Handler.GDataGridViewTextBoxCellHandler, KCCS.GSmartClient.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+          </object>
+        </entry>
+      </dictionary>
+    </constructor-arg>
+  </object>
+  <!-- GValidatorSet -->
+  <object id="KCCS.GSmartClient.Forms.Controls.GValidatorSet"
+      type="KCCS.GSmartClient.Forms.Controls.GValidatorSetImpl, KCCS.GSmartClient.Forms" singleton="false"/>
+  <!-- GValidatorFactory -->
+  <object id="KCCS.GSmartClient.Forms.Validator.GValidatorFactory"
+          type="KCCS.GSmartClient.Forms.Validator.GValidatorFactoryImpl, KCCS.GSmartClient.Forms" singleton="true">
+    <constructor-arg index="0">
+      <dictionary key-type="string"
+                  value-type="KCCS.GSmartClient.Forms.Validator.GValidator, KCCS.GSmartClient.Forms">
+        <!-- GDateTypeValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GDateTypeValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GDateTypeValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GMaxByteLengthValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GMaxByteLengthValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GMaxByteLengthValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GMaxDecimalLengthValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GMaxDecimalLengthValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GMaxDecimalLengthValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GMaxIntegerLengthValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GMaxIntegerLengthValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GMaxIntegerLengthValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GMaxStringLengthValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GMaxStringLengthValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GMaxStringLengthValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GMaxValueValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GMaxValueValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GMaxValueValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GMinValueValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GMinValueValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GMinValueValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GNotFollowValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GNotFollowValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GNotFollowValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GNotLowerCaseValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GNotLowerCaseValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GNotLowerCaseValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GNotMinusValueValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GNotMinusValueValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GNotMinusValueValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GNotPastValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GNotPastValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GNotPastValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GNotUpperCaseValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GNotUpperCaseValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GNotUpperCaseValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GNotZeroValueValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GNotZeroValueValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GNotZeroValueValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GNumberTypeValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GNumberTypeValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GNumberTypeValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GPermissionValueValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GPermissionValueValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GPermissionValueValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GProhibitionValueValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GProhibitionValueValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GProhibitionValueValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+        <!-- GRequiredValidator -->
+        <entry key="KCCS.GSmartClient.Forms.Validator.GRequiredValidator">
+          <object type="KCCS.GSmartClient.Forms.Validator.GRequiredValidator, KCCS.GSmartClient.Forms" singleton="true"/>
+        </entry>
+      </dictionary>
+    </constructor-arg>
+  </object>
+
+  <!-- ###########################
+            GC.Forms
+     ########################### -->
+
+  <!-- GcMultiRow -->
+<!--
+  <object id="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowHandler"
+    type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+    <constructor-arg index="0">
+      <ref object="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowRowHandler"/>
+    </constructor-arg>
+  </object>
+  <object id="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowRowHandler"
+      type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowRowHandlerImpl, KCCS.GSmartClient.GC.Forms" singleton="true">
+    <constructor-arg index="0">
+      <dictionary key-type="string"
+                  value-type="KCCS.GSmartClient.Forms.Handler.GComponentHandler, KCCS.GSmartClient.Forms">
+        <entry key="GrapeCity.Win.MultiRow.ButtonCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowButtonCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true"/>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.CheckBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowCheckBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GBooleanTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.ComboBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowComboBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GIntTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.DateTimePickerCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowDateTimePickerCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDateTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.InputMan.GcCharMaskCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowGcCharMaskCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.InputMan.GcDateTimeCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowGcDateCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDateTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.InputMan.GcMaskCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowGcMaskCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.InputMan.GcNumberCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowGcNumberCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDecimalTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.InputMan.GcTextBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowGcTextBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="KCCS.GSmartClient.GC.Forms.Controls.GGcMultiRowClearableTextBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowClearableTextBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="KCCS.GSmartClient.GC.Forms.Controls.GGcMultiRowClearableGcTextBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowClearableGcTextBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="KCCS.GSmartClient.GC.Forms.Controls.GGcMultiRowIndexCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowIndexCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true"/>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.LinkLabelCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowLinkLabelCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true"/>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.MaskedTextBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowMaskedTextBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.NumericUpDownCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowNumericUpDownCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GDecimalTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.RadioGroupCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowRadioGroupCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GIntTypeConverter, KCCS.GSmartClient.Forms" singleton="false"/>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.RichTextBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowRichTextBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+        <entry key="GrapeCity.Win.MultiRow.TextBoxCell">
+          <object type="KCCS.GSmartClient.GC.Forms.Handler.GGcMultiRowTextBoxCellHandler, KCCS.GSmartClient.GC.Forms" singleton="true">
+            <constructor-arg index="0">
+              <object type="KCCS.GSmartClient.Forms.Handler.GStringTypeConverter, KCCS.GSmartClient.Forms" singleton="false">
+                <constructor-arg index="0" value="yyyy/MM/dd"/>
+              </object>
+            </constructor-arg>
+            <constructor-arg name="errorIconAlignment" value="MiddleRight"/>
+          </object>
+        </entry>
+      </dictionary>
+    </constructor-arg>
+  </object>
+-->
+  
+</objects>

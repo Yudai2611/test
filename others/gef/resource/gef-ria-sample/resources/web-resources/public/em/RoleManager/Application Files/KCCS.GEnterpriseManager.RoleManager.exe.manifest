@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="KCCS.GEnterpriseManager.RoleManager.exe" version="24.4.0.0" publicKeyToken="5afb1a218c373a29" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Icons\App.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="KCCS.GEnterpriseManager.RoleManager" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="KCCS.GEnterpriseManager.RoleManager.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!-- UAC マニフェスト オプション
+             Windows のユーザー アカウント制御のレベルを変更するには、
+             requestedExecutionLevel ノードを以下のいずれかで置換します。
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+            下位互換性のためにファイルおよびレジストリの仮想化を
+            利用する場合は、requestedExecutionLevel ノードを削除してください。
+        -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="antlr.runtime.dll" size="106496">
+      <assemblyIdentity name="antlr.runtime" version="2.7.6.2" publicKeyToken="65E474D141E25E07" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>oZgsrlw5iwsc02ELkxodCPhJMmhv1ecvBlnJ0si1Y0A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.Logging.dll" size="28672">
+      <assemblyIdentity name="Common.Logging" version="1.2.0.0" publicKeyToken="AF08829B84F0328E" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>E5YKj00W6RJN2ScK61C45eQg2d6HDOXJnZMRXAomNlk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.Logging.Log4Net.dll" size="7680">
+      <assemblyIdentity name="Common.Logging.Log4Net" version="1.2.0.2" publicKeyToken="AF08829B84F0328E" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LwTV7Hx0O8U0fBW2pWyVf0D4rVLHpCtmI/kX8DK4KTM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GEnterpriseManager.Common.dll" size="194560">
+      <assemblyIdentity name="KCCS.GEnterpriseManager.Common" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>5OvCbjCVkxkx1FlaqmEr4IXdbJjmRifD2YB9RmrGIVU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ja\KCCS.GEnterpriseManager.Common.resources.dll" size="22528">
+      <assemblyIdentity name="KCCS.GEnterpriseManager.Common.resources" version="24.4.0.0" language="ja" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ONZZmyM+/BkMHGyimDGaZZqIz/UDtHSpmBTW7LZCGzI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GEnterpriseManager.RoleManager.exe" size="397264">
+      <assemblyIdentity name="KCCS.GEnterpriseManager.RoleManager" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>QapSpzyHSU+Q7WSqTEUGR+DVTSafdQEWb7XRJTkj7MI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ja\KCCS.GEnterpriseManager.RoleManager.resources.dll" size="174080">
+      <assemblyIdentity name="KCCS.GEnterpriseManager.RoleManager.resources" version="24.4.0.0" language="ja" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ETj9pvB5wwKrRdlBaK21TKOevK50i7k7ivbh3YUdcv0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GSmartClient.Auth.dll" size="37888">
+      <assemblyIdentity name="KCCS.GSmartClient.Auth" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>luyT8AiEOVD7tNqfEt7yvlWHGHV/JzCCQzNUO8i7+wY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GSmartClient.Commons.dll" size="45056">
+      <assemblyIdentity name="KCCS.GSmartClient.Commons" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ahy1rpdMf7y/KVH5WqjDE8U+C10MkOrbCCX5PUoJ7y8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GSmartClient.Config.dll" size="4608">
+      <assemblyIdentity name="KCCS.GSmartClient.Config" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lYvGwRGK87jboLY5ts+ZO8o7ExxdWIrcSVwoQC0QUhg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GSmartClient.Core.dll" size="56320">
+      <assemblyIdentity name="KCCS.GSmartClient.Core" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>4+I9VoTT5vX+YMaRQq84mZa9nT9wBiAyED77oL2NXfI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GSmartClient.Forms.dll" size="189952">
+      <assemblyIdentity name="KCCS.GSmartClient.Forms" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>HZoJxz1FWoD4n7JoZ4w4T9g17q/FQRdItrwtlrsZkSM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KCCS.GSmartClient.GC.Forms.dll" size="24064">
+      <assemblyIdentity name="KCCS.GSmartClient.GC.Forms" version="24.4.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>cosRs2EANnDsNY64+ii7p8Kob56AbKnNYXj8JK1X86o=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="270336">
+      <assemblyIdentity name="log4net" version="1.2.10.0" publicKeyToken="1B44E1D426115821" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>J9Jqq0L3yrNb9R0FNsZ+1VP8l7ZwImuGiAXnxpJ+XIc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spring.Aop.dll" size="143872">
+      <assemblyIdentity name="Spring.Aop" version="1.3.1.40711" publicKeyToken="65E474D141E25E07" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>gHU4MoMya5uF5plEkWga7T7Z8GCHVodtriLqQ7cx8E4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spring.Core.dll" size="773632">
+      <assemblyIdentity name="Spring.Core" version="1.3.1.40711" publicKeyToken="65E474D141E25E07" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>6CU/83TioMIhQg24jaZ+S/BnT1Y8rXyvgUmvLws+Ykk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="ge-container-spring.xml" size="48638">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>trLObrXQUFIwhF5KIH1sogjB2w8SezDOQJH3OfqFlGc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Icons\App.ico" size="1150">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>cRxDX3ustoJ34fqaEg/2jZHEKLrINPBD9IwDQXgwN5U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="KCCS.GEnterpriseManager.RoleManager.exe.config" size="5885">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>PC1YhKPOcvJMEFAd1gohWvd8NC+SVUUsIvI9s2pm/0I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resource\Message\en\MessageResource.en.resx" size="13357">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XfO3g9jqCsV7kXYAjOoWB6Uliv9ukqALWVrDSjkQgwM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resource\Message\ja\MessageResource.ja.resx" size="13832">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>2ULxDCYsUIJXEc9cHGkqVVjsVsPXSsuacze4rVFGmrQ=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=KCCSAUTH\190550023" issuerKeyHash="7b718e2df35e152d33a24f1d395c859a5022b76a" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>ASMSsJA68gOgSQcWFGhFZjJGYAHsQQhBhVX3WVC0fmw=</DigestValue></Reference></SignedInfo><SignatureValue>RNqQFJhrdMQjYQbtqsAMlUdZlHlekOIDSTFbeeQlX/HcqNizO9OI/EjfYYMQ6hsMs6mCRmv9Kak6e8BKsF64610v2sftR+HxD8yGEe+CAc6yXpCBfKpuJl+4qR4kQAOZ0KBRkhH4Wh78s5Gu9sTavKgAyXp2fimjyFsDb7704HI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>pXpKpV9eMpQ341sIyEAWjtE8FbYls2PXOcN2XLYjI5Sy+rnu/e3/AhGtBsb6VUccD+wnb5gtVjbFHlsFrxeiYspZNRr5hJ0bEGlXL1b53kSzl+rlSq2UbGOoiRt0azSSkkuJQm45S8aDxDaHKw78Uor7+JJR+tk7Z5DZaRbh7x0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="6c7eb45059f75585410841ec0160463266456814160749a003f23a90b0122301" Description="" Url=""><as:assemblyIdentity name="KCCS.GEnterpriseManager.RoleManager.exe" version="24.4.0.0" publicKeyToken="5afb1a218c373a29" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=KCCSAUTH\190550023</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>4hb1n/nOBVHHhQIhtrmnkSBa06u/0rOrPYV0J/eVhHo=</DigestValue></Reference></SignedInfo><SignatureValue>kTJTsuv13MDiHSjEmTy6M2aYwvhW3HcuBHT+z4HRyB1s0+VXxU8tv7SfpZqwtFw7dRcEWhT3bO2ebvGEBPSMsFUAnXrnyb3oTQD/4KeSskRwsTAoLRjXBGgsD2b5Gk42gdQTFedACQ6o6b9HxKs7GSRga2h7pLlJEzJwoIEwxoE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>pXpKpV9eMpQ341sIyEAWjtE8FbYls2PXOcN2XLYjI5Sy+rnu/e3/AhGtBsb6VUccD+wnb5gtVjbFHlsFrxeiYspZNRr5hJ0bEGlXL1b53kSzl+rlSq2UbGOoiRt0azSSkkuJQm45S8aDxDaHKw78Uor7+JJR+tk7Z5DZaRbh7x0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB4TCCAUqgAwIBAgIQHn0eTRKDRLNEkphXsRA6EDANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDHiQASwBDAEMAUwBBAFUAVABIAFwAMQA5ADAANQA1ADAAMAAyADMwHhcNMjMwOTA4MDcwNjIwWhcNMjQwOTA3MTMwNjIwWjAvMS0wKwYDVQQDHiQASwBDAEMAUwBBAFUAVABIAFwAMQA5ADAANQA1ADAAMAAyADMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKV6SqVfXjKUN+NbCMhAFo7RPBW2JbNj1znDdly2IyOUsvq57v3t/wIRrQbG+lVHHA/sJ2+YLVY2xR5bBa8XomLKWTUa+YSdGxBpVy9W+d5Es5fq5UqtlGxjqIkbdGs0kpJLiUJuOUvGg8Q2hysO/FKK+/iSUfrZO2eQ2WkW4e8dAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAPjOrEZ8o6wJ0+ILdY7Y+cP38DrvL+ARpCSKiFPxOJYJehthuDr0xr5qburdbMS8x2jNasQezjNNJPUpn9emSMEtpjjX9w57deTGK9OvV7wyCK9kMlpFdiDiPmNo7fiZIm1MMJnYVIDC2m/EGzDeRG2HYJcKvP5fQk00QGMNgMNY=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

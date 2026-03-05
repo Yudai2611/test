@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<error-messages>
+	<import resource="/error-message/ErrorMessage_en.xml" />
+	<error code="GES-000052">
+		<type>error</type>
+		<message>Exists on the master</message>
+	</error>
+	<error code="GES-000055">
+		<type>error</type>
+		<message>Enter the stop date after the start date.</message>
+	</error>
+	<error code="GES-000102">
+		<type>error</type>
+		<message>Exclusive Error</message>
+	</error>
+	<error code="GES-000103">
+		<type>error</type>
+		<message>Deleted Error</message>
+	</error>
+	<error code="GES-000113">
+		<type>error</type>
+		<message>No Data Exists</message>
+	</error>
+	<error code="GES-010001">
+		<type>error</type>
+		<message>Enter the date (TO) after the date (FROM)</message>
+	</error>
+	<error code="GES-010002">
+		<type>error</type>
+		<message>Product master organization has been completed.</message>
+	</error>
+	<error code="GES-100001">
+		<type>error</type>
+		<message>There is no detail line.</message>
+	</error>
+	<error code="GES-100002">
+		<type>error</type>
+		<message>Please check the selection checkbox.</message>
+	</error>
+	<error code="GES-100003">
+		<type>error</type>
+		<message>There is no product that corresponded to the product code.</message>
+	</error>
+	<error code="GES-100004">
+		<type>error</type>
+		<message>No more slip numbers can be assigned.</message>
+	</error>
+	<error code="GES-100005">
+		<type>error</type>
+		<message>Detail line exceeds 200 lines.</message>
+	</error>
+	<error code="GES-100006">
+		<type>error</type>
+		<message>The specified file cannot be uploaded because it is double loaded.</message>
+	</error>
+	<error code="GES-100007">
+		<type>error</type>
+		<message>The specified file cannot be uploaded because the import file is empty.</message>
+	</error>
+	<error code="GES-100008">
+		<type>error</type>
+		<message>Object data does not exist.</message>
+	</error>
+	<error code="GES-100009">
+		<type>error</type>
+		<message>This item is required.</message>
+	</error>
+	<error code="GES-100010">
+		<type>error</type>
+		<message>It already exists in the import destination table.</message>
+	</error>
+	<error code="GES-100011">
+		<type>error</type>
+		<message>Import task information does not exist.</message>
+	</error>
+	<error code="GES-100012">
+		<type>error</type>
+		<message>Line {0}: database access error.</message>
+	</error>
+	<error code="GES-100013">
+		<type>error</type>
+		<message>Please specify the import file.</message>
+	</error>
+	<error code="GES-100014">
+		<type>error</type>
+		<message>No output data source is selected.</message>
+	</error>
+	<error code="GES-100015">
+		<type>error</type>
+		<message>No output item is selected.</message>
+	</error>
+	<error code="GES-100016">
+		<type>error</type>
+		<message>The format of the search condition value is incorrect.</message>
+	</error>
+	<error code="GES-100017">
+		<type>error</type>
+		<message>The file output format is not selected.</message>
+	</error>
+	<error code="GES-100018">
+		<type>error</type>
+		<message>The search result exceeds the limit value.</message>
+	</error>
+	<error code="GES-100019">
+		<type>error</type>
+		<message>Fuzzy search is not available except for string type</message>
+	</error>
+	<error code="SMP-000001">
+		<type>error</type>
+		<message>Please enter between 1-99.</message>
+	</error>
+	<error code="SMP-000002">
+		<type>error</type>
+		<message>There is no detail line.</message>
+	</error>
+	<error code="SMP-000003">
+		<type>error</type>
+		<message>Select the Select check box.</message>
+	</error>
+	<error code="SMP-000004">
+		<type>error</type>
+		<message>Be sure to enter the product code, the number of orders, the unit price, and the delivery date.</message>
+	</error>
+	<error code="SMP-000006">
+		<type>error</type>
+		<message>This item is required.</message>
+	</error>
+	<error code="SMP-000007">
+		<type>error</type>
+		<message>Please enter a start date that is earlier than the stop date.</message>
+	</error>
+	<error code="SMP-000008">
+		<type>error</type>
+		<message>There is no product corresponding to the product code.</message>
+	</error>
+	<error code="SMP-002001">
+		<type>error</type>
+		<message>The specified file cannot be uploaded because it is double loaded.</message>
+	</error>
+	<error code="SMP-002002">
+		<type>error</type>
+		<message>Import task information does not exist.</message>
+	</error>
+	<error code="SMP-002003">
+		<type>error</type>
+		<message>It already exists in the import destination table.</message>
+	</error>
+	<error code="SMP-002004">
+		<type>error</type>
+		<message>Please specify the import file.</message>
+	</error>
+	<error code="SMP-002005">
+		<type>error</type>
+		<message>The specified file cannot be uploaded because the import file is empty.</message>
+	</error>
+	<error code="SMP-002006">
+		<type>error</type>
+		<message>Line {0} : database access error.</message>
+	</error>
+	<error code="SMP-009001">
+		<type>error</type>
+		<message>User ID is locked.</message>
+	</error>
+	<error code="SMP-009002">
+		<type>error</type>
+		<message>The error occurred while processing the rollback.</message>
+	</error>
+	<error code="SMP-009003">
+		<type>error</type>
+		<message>The error occurred while processing the db connection release.</message>
+	</error>
+	<error code="SMP-009004">
+		<type>error</type>
+		<message>There is no pertinent record.</message>
+	</error>
+	<error code="SMP-009005">
+		<type>error</type>
+		<message>[ DndValue > CurrentValue + IncrementValue ] is Error.</message>
+	</error>
+	<error code="SMP-010001">
+		<type>error</type>
+		<message>Enter the date (TO) after the date (FROM)</message>
+	</error>
+	<error code="SMP-010002">
+		<type>error</type>
+		<message>Product master organization has been completed.</message>
+	</error>
+	<error code="SMP-010003">
+		<type>error</type>
+		<message>Product master organization has been abnormal end.</message>
+	</error>
+	<error code="SMP-010004">
+		<type>error</type>
+		<message>Failed to register the product master schedule.</message>
+	</error>
+	<error code="SMP-010005">
+		<type>error</type>
+		<message>No job schedule selected.</message>
+	</error>
+	<error code="SMP-010006">
+		<type>error</type>
+		<message>No day of the week selected.</message>
+	</error>
+</error-messages>

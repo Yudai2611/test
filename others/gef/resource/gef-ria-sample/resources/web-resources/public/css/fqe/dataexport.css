@@ -1,0 +1,337 @@
+@CHARSET "UTF-8";
+/**********************************************************
+	TAB
+**********************************************************/
+.tab_inactive {
+	padding-left: 5px;
+	border: 1px solid #0088cc;
+	border-bottom-width: 0px;
+	text-align: left;
+	vertical-align: middle5;
+	font-size: xx-small;
+	white-space: nowrap;
+	background-color: white;
+	color: black;
+	height: 20px;
+}
+.tab_active {
+	padding-left: 5px;
+	padding-right: 10px;
+	height: 20px;
+	height: 15px;
+	border: 1px solid #0088cc;
+	text-align: left;
+	vertical-align: middle;
+	font-size: xx-small;
+	white-space: nowrap;
+	background-color: #0088cc;
+	color: white;
+	font-size: xx-small;
+}
+.tab_border {
+	border-bottom: solid 1px #0088cc;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+}
+.ui-tabs-nav li {
+	position: relative;
+	width: fit-content !important;
+	min-width: 91px;
+}
+.ui-tabs-nav {
+	background: none;
+	border: none;
+}
+.ui-tabs-panel {
+	text-align: right;
+	padding-top: 0px !important;
+	padding-right: 0px !important;
+}
+.geui-gplist-block {
+	padding-right: 18.2px;
+	padding-top: 25px;
+	padding-bottom: 10px;
+}
+
+li[role=tab] {
+	width:91px;
+}
+
+a[class=ui-tabs-anchor]{
+	padding-left: 28px !important;
+}
+/**********************************************************
+    BUTTON
+**********************************************************/
+.geui-gplist .plus {
+	font-family: Arial;
+	width: 21px;
+	height: 21px;
+	font-size: xx-small;
+	white-space: nowrap;
+	background: chocolate;
+	color: white;
+	padding: 0px 2px;
+	margin: 0px 4px;
+	text-align: center;
+}
+.geui-gplist .plusS {
+	font-family: Arial;
+	width: 21px;
+	height: 21px;
+	font-size: xx-small;
+	white-space: nowrap;
+	background: navy;
+	color: white;
+	padding: 0px 2px;
+	margin: 0px 4px;
+	text-align: center;
+}
+.geui-gplist .plusO {
+	font-family: Arial;
+	width: 21px;
+	height: 21px;
+	font-size: xx-small;
+	white-space: nowrap;
+	background: #800080;
+	color: white;
+	padding: 0px 2px;
+	margin: 0px 4px;
+	text-align: center;
+}
+.geui-gplist .minus {
+	width: 21px;
+	height: 21px;
+	font-size: xx-small;
+	white-space: nowrap;
+	background: chocolate;
+	color: white;
+	padding: 0px 2px;
+	margin: 0px 4px;
+	text-align: center;
+}
+.geui-gplist .minusS {
+	width: 21px;
+	height: 21px;
+	font-size: xx-small;
+	white-space: nowrap;
+	background: navy;
+	color: white;
+	padding: 0px 2px;
+	margin: 0px 4px;
+	text-align: center;
+}
+.geui-gplist .minusO {
+	width: 21px;
+	height: 21px;
+	font-size: xx-small;
+	white-space: nowrap;
+	background: #800080;
+	color: white;
+	padding: 0px 2px;
+	margin: 0px 4px;
+	text-align: center;
+}
+td .udbtn {
+	height: 21px;
+	width: 21px;
+	color: black;
+	background: lightblue;
+	font-size: x-small;
+	text-align: center !important;
+	padding: 0px 2px;
+	margin: 0px 4px;
+}
+.function-btn {
+	width: 120px;
+	margin-right: 7px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.filedBtn {
+	width: 30px;
+	min-width: 30px;
+	text-align: center;
+}
+.moveBtn {
+	vertical-align: top; 
+	padding-top: 39px;
+	width: 26px;
+}
+.confirm-btn {
+	width:120px;
+	margin-right: 10px;
+}
+span[id^=RemoveBtn] {
+	padding: 0px;
+	margin-bottom: 20px;
+	font-weight:bold;
+	font-size: 5px;
+	cursor: pointer;
+	color:#2e609e;
+}
+span[id^=RemoveBtn]:hover, span[id^=AddBtn]:hover {
+	background-color:#d9d9d9;
+	border-radius: 15px;
+}
+span[id=AddBtn]{
+	font-weight:bold;
+	font-size: 25px !important;
+	cursor: pointer;
+	color:#2e609e;
+}
+/**********************************************************
+    TEXT
+**********************************************************/
+.dialog-text {    
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    
+}
+
+.text {
+	height:15px;
+}
+
+.history {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+/**********************************************************
+	LIST
+**********************************************************/
+
+.geui-gplist-header-cell, .label {
+    background-color: #007199!important;
+	color: white !important;
+}
+
+.geui-gplist .selected {
+	background-color: lightyellow !important;
+	color: teal;
+	font-weight: bold;
+}
+tbody td #Column {
+	cursor: pointer;
+}
+.selectable tr.geui-gplist-odd-row td, .selectable tr.geui-gplist-even-row td { cursor: pointer !important; }
+
+.drag{
+    background-color: #f9f9f9;
+    border: dotted 2px #F15A24;
+}
+.geui-gplist-caption {
+	border: none;
+	background: none;
+	color: black;
+}
+.filedName {
+	min-width: 150px;
+}
+.list {
+	width: 94%;
+}
+.fileterInputHeader {
+	min-width: 160px;
+	text-align-last: center;
+}
+.inputCell {
+	text-align: center;
+}
+.inputControl {
+	width: 85%;
+}
+.geui-gplist-odd-row td {
+    background-color: #FAFDFF !important;
+}
+
+.geui-gplist-even-row td {
+  background-color: #F7FBFD !important;
+}
+
+.row, tr[class~=ui-sortable-handle] {
+	height: 29px;
+	vertical-align:middle;
+}
+
+select {
+	height: 21px;
+}
+
+#datasourceList_list_block {
+	padding-top: 15px;
+}
+.left-aligned {
+	padding-left: 10px;
+}
+td > span[class~=geui-gplabel], td > a[class~=geui-gplinkedlabel] {
+	overflow-x: auto;
+    display: block;
+}
+/**********************************************************
+	AREA
+**********************************************************/
+.outputcolumn {
+
+	width: 100%;
+	border-radius: 5px;
+	margin-top: 30px;
+	padding: .2em;
+}
+
+.datasetcolumn {
+
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #a6c9e2;
+	margin-top: 5px;
+	margin-bottom: 30px;
+	padding: .2em;
+}
+
+.sortcondition {
+	width: 100%;
+	border-radius: 5px;
+	margin-top: 30px;
+	padding: .2em;
+}
+
+.condition {
+	margin-top: 15px;
+	border-collapse: collapse;
+    border-style: solid;
+    border-color: blue;
+    border-width: thin;
+}
+}
+#fieldList, #sortFieldList {
+	margin-top: 13px;
+	margin-bottom: 13px;
+	margin-left: 18.2px;
+    margin-right: 18.2px;
+}
+.ui-dialog-titlebar {
+	background: #007199;
+}
+.ui-tabs-panel {
+	border: 1px solid #79b7e7 !important;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+.geui-gpselect {
+	background: white !important;
+}
+#filterFieldGroupList {
+	border: none;
+	background: none;
+}
+.exportAndSortTable {
+	padding-top: 37px;
+}
+.condition {
+	margin-top: 30px;
+	margin-bottom: 15px;
+}

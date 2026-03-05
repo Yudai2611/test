@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="user_profile_master" database="MainDataSource">
+	<Columns>
+		<Column name="UserId" phyName="user_id" type="Varchar" size="36" />
+		<Column name="Username" phyName="username" type="Varchar" size="20" />
+		<Column name="FirstName" phyName="first_name" type="Varchar" size="100" />
+		<Column name="LastName" phyName="last_name" type="Varchar" size="100" />
+		<Column name="CompanyCode" phyName="company_code" type="Numeric" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="UserId" />
+	</PrimaryKey>
+</Entity>

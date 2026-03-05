@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          ">
+	<!-- ###########################
+              gef-fqe-core
+         ########################### -->
+
+	<!-- export file type -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExportFileTypeMapper" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExportFileTypeMapperImpl">
+		<constructor-arg>
+			<map>
+				<entry key="CSV">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GCsvExportFileType" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GCsvExportFileType"/>
+				</entry>
+				<entry key="TSV">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GTsvExportFileType" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GTsvExportFileType"/>
+				</entry>
+				<entry key="EXCEL">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExcelExportFileType" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExcelExportFileType"/>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- datasource type -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.datasource.GDatasourceTypeMapper" class="jp.co.kccs.greenearth.framework.fqecore.datasource.GDatasourceTypeMapperImpl">
+		<constructor-arg>
+			<map>
+				<entry key="DATASOURCE_ENTITY">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.datasource.GEntityDatasourceType" class="jp.co.kccs.greenearth.framework.fqecore.datasource.GEntityDatasourceType"/>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- exporter -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GDatasourceExporter.Factory" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GDatasourceExporter.Factory">
+		<constructor-arg>
+			<map>
+				<entry key="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExcelExportFileType">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExcelFileDatasourceExporter" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExcelFileDatasourceExporter">
+						<constructor-arg value="xlsx" />
+						<constructor-arg>
+							<bean class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GXLSXPartCreationProvider">
+								<property name="SheetName">
+									<value>Sheet1</value>
+								</property>
+							</bean>
+						</constructor-arg>
+					</bean>
+				</entry>
+				<entry key="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GCsvExportFileType">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GCsvTextFileDatasourceExporter" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GCsvTextFileDatasourceExporter"/>
+				</entry>
+				<entry key="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GTsvExportFileType">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GTsvTextFileDatasourceExporter" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GTsvTextFileDatasourceExporter"/>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+	<!-- importer -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.imports.GDatasourceImporter.Factory" class="jp.co.kccs.greenearth.framework.fqecore.domain.imports.GDatasourceImporter.Factory">
+		<constructor-arg>
+			<map>
+				<entry key="jp.co.kccs.greenearth.framework.fqecore.datasource.GEntityDatasourceType">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.imports.GEntityDatasourceImporter" class="jp.co.kccs.greenearth.framework.fqecore.domain.imports.GEntityDatasourceImporter"/>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- datasource factory -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.datasource.factory.GDatasourceMetadataFactory.Factory" class="jp.co.kccs.greenearth.framework.fqecore.datasource.factory.GDatasourceMetadataFactory.Factory">
+		<constructor-arg>
+			<ref bean="jp.co.kccs.greenearth.framework.fqecore.datasource.GDatasourceTypeMapper"/>
+		</constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key="jp.co.kccs.greenearth.framework.fqecore.datasource.GEntityDatasourceType">
+					<bean id="jp.co.kccs.greenearth.framework.fqecore.datasource.factory.GEntityDatasourceMetadataFactory" class="jp.co.kccs.greenearth.framework.fqecore.datasource.factory.GEntityDatasourceMetadataFactory"/>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- datasource registry -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.registry.GDatasourceMetadataRegistry.Factory" class="jp.co.kccs.greenearth.framework.fqecore.domain.registry.GDatasourceMetadataRegistry.Factory">
+		<constructor-arg>
+			<bean id="jp.co.kccs.greenearth.framework.fqecore.domain.registry.GDatasourceMetadataCache.memory" class="jp.co.kccs.greenearth.framework.fqecore.domain.registry.GDatasourceMetadataMemoryCache" scope="prototype"/>
+		</constructor-arg>
+	</bean>
+
+	<!-- services -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.history.GHistoryConditionService" class="jp.co.kccs.greenearth.framework.fqecore.domain.history.GHistoryConditionServiceImpl">
+		<constructor-arg>
+			<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.history.dao.GHistoryConditionDao" class="jp.co.kccs.greenearth.framework.fqecore.domain.history.dao.GHistoryConditionDaoImpl"/>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.registry.GDatasourceMetadataService" class="jp.co.kccs.greenearth.framework.fqecore.domain.registry.GDatasourceMetadataServiceImpl">
+		<constructor-arg>
+			<bean class="jp.co.kccs.greenearth.framework.fqecore.datasource.GCreationTimeComparator"/>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExportService" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExportServiceImpl"/>
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.imports.GImportService" class="jp.co.kccs.greenearth.framework.fqecore.domain.imports.GImportServiceImpl"/>
+
+	<!-- sorter -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.datasource.GDataSourceMetadataSorter" class="jp.co.kccs.greenearth.framework.fqecore.datasource.GDataSourceMetadataSorterImpl"/>
+
+	<!-- general -->
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExportedResult" class="jp.co.kccs.greenearth.framework.fqecore.domain.exports.GExportedResultImpl" scope="prototype"/>
+	<bean name="jp.co.kccs.greenearth.framework.fqecore.context.GFqeContextDataExtractorResolver" class="jp.co.kccs.greenearth.framework.fqecore.context.GFqeContextDataExtractorResolverImpl"/>
+</beans>

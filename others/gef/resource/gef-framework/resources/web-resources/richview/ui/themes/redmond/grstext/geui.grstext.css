@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+/* Copyright 2011 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA geui.grstext コンポーネント
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @create 2011/06/10
+ * @author kobayashi
+ * @since 3.9.0
+ */
+/***********************************************/
+/* geui.grstext*/
+/***********************************************/
+.geui-grstext {}
+.geui-grstext-readonly { background-image: none; background-color: #f7f7f7; }
+.geui-grstext-disabled {}
+.geui-grstext-label {}

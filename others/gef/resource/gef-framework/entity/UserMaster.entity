@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entity phyName="UserMaster" database="MainDataSource">
+	<Columns>
+		<Column name="ID" phyName="ID" type="Varchar" size="50" />
+		<Column name="Name" phyName="Name" type="Varchar" size="255" />
+		<Column name="Password" phyName="Password" type="Varchar" size="50" />
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="Status" phyName="Status" type="Numeric" size="1" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCD" />
+		<ReferenceColumn refName="ID" />	
+	</PrimaryKey>
+	<ForeignKeys>
+		<ForeignKey name="OrganizationKey" refEntity="UserOrganizationMap">
+			<JoinColumn srcName="CompanyCD" refName="CompanyCD" />
+			<JoinColumn srcName="ID" refName="UserID" />
+		</ForeignKey>
+		<ForeignKey name="RankKey" refEntity="UserRankMap">
+			<JoinColumn srcName="CompanyCD" refName="CompanyCD" />
+			<JoinColumn srcName="ID" refName="UserID" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

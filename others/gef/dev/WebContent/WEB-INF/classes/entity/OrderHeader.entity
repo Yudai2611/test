@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entity phyName="OrderHeader" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="RegisteredPerson" phyName="RegisteredPerson" type="Varchar" size="20" />
+		<Column name="RegisteredDT" phyName="RegisteredDT" type="Date" generate="RegisteredDate" />
+		<Column name="UpdatedPerson" phyName="UpdatedPerson" type="Varchar" size="20" />
+		<Column name="UpdatedDT" phyName="UpdatedDT" type="Date" generate="UpdatedDate" />
+		<Column name="ExclusiveFG" phyName="ExclusiveFG" type="Varchar" size="32" exclusiveKey="true" />
+		<Column name="SlipNO" phyName="SlipNO" type="Varchar" size="15" />
+		<Column name="CorporateNA_KANA" phyName="CorporateNA_KANA" type="Varchar" size="40" />
+		<Column name="CorporateNA" phyName="CorporateNA" type="Varchar" size="40" />
+	</Columns>
+	<UniqueKeys>
+		<UniqueKey name="SlipNOKey">
+			<ReferenceColumn refName="CompanyCD" />
+			<ReferenceColumn refName="SlipNO" />
+		</UniqueKey>
+	</UniqueKeys>
+	<ForeignKeys>
+		<ForeignKey name="OrderDetailReferenceKey" refEntity="OrderDetail">
+			<JoinColumn srcName="CompanyCD" refName="CompanyCD" />
+			<JoinColumn srcName="SlipNO" refName="SlipNO" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

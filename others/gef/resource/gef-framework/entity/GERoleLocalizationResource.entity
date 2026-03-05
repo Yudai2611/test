@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="GERoleLocalizationResource" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCode" phyName="CompanyCode" type="Varchar" size="5" />
+		<Column name="ResourceID" phyName="ResourceID" type="Char" size="36" />
+		<Column name="Value" phyName="Value" type="Varchar" size="1023" />
+		<Column name="Locale" phyName="Locale" type="Varchar" size="20" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCode" />
+		<ReferenceColumn refName="ResourceID" />
+		<ReferenceColumn refName="Locale" />
+	</PrimaryKey>
+	<UniqueKeys>
+		<UniqueKey name="ResourceUK">
+			<ReferenceColumn refName="CompanyCode" />
+			<ReferenceColumn refName="ResourceID" />
+			<ReferenceColumn refName="Locale" />
+		</UniqueKey>
+	</UniqueKeys>
+	<ForeignKeys>
+	</ForeignKeys>
+</Entity>

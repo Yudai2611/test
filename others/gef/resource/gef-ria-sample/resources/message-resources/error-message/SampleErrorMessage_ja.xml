@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<error-messages>
+	<import resource="/error-message/ErrorMessage_ja.xml" />
+	<error code="GES-000052">
+		<type>error</type>
+		<message>マスタに存在します</message>
+	</error>
+	<error code="GES-000055">
+		<type>error</type>
+		<message>停止日は開始日より後の日付を入力して下さい</message>
+	</error>
+	<error code="GES-000102">
+		<type>error</type>
+		<message>他のユーザーが更新しています</message>
+	</error>
+	<error code="GES-000103">
+		<type>error</type>
+		<message>削除されています</message>
+	</error>
+	<error code="GES-000113">
+		<type>error</type>
+		<message>該当データがありません</message>
+	</error>
+	<error code="GES-010001">
+		<type>error</type>
+		<message>日付（TO）は日付（FROM）より後の日付を入力して下さい</message>
+	</error>
+	<error code="GES-010002">
+		<type>error</type>
+		<message>商品マスタ整理が終了しました。</message>
+	</error>
+	<error code="GES-100001">
+		<type>error</type>
+		<message>明細行がありません</message>
+	</error>
+	<error code="GES-100002">
+		<type>error</type>
+		<message>選択チェックボックスを選択してください</message>
+	</error>
+	<error code="GES-100003">
+		<type>error</type>
+		<message>商品コードに該当する商品がありません</message>
+	</error>
+	<error code="GES-100004">
+		<type>error</type>
+		<message>これ以上伝票番号を採番できません</message>
+	</error>
+	<error code="GES-100005">
+		<type>error</type>
+		<message>明細行が200行を超えます</message>
+	</error>
+	<error code="GES-100006">
+		<type>error</type>
+		<message>二重取込のため、指定したファイルをアップロードできません。</message>
+	</error>
+	<error code="GES-100007">
+		<type>error</type>
+		<message>インポートファイルが空のため、指定したファイルをアップロードできません。</message>
+	</error>
+	<error code="GES-100008">
+		<type>error</type>
+		<message>対象データが存在しません。</message>
+	</error>
+	<error code="GES-100009">
+		<type>error</type>
+		<message>この項目は必須入力です。</message>
+	</error>
+	<error code="GES-100010">
+		<type>error</type>
+		<message>取込先テーブルに既に存在しています。</message>
+	</error>
+	<error code="GES-100011">
+		<type>error</type>
+		<message>インポートタスク情報が存在しません。</message>
+	</error>
+	<error code="GES-100012">
+		<type>error</type>
+		<message>{0}行目：DBアクセスエラーが発生しました。</message>
+	</error>
+	<error code="GES-100013">
+		<type>error</type>
+		<message>インポートファイルを指定してください。</message>
+	</error>
+	<error code="GES-100014">
+		<type>error</type>
+		<message>出力データソースが選択されていません。</message>
+	</error>
+	<error code="GES-100015">
+		<type>error</type>
+		<message>出力項目が選択されていません。</message>
+	</error>
+	<error code="GES-100016">
+		<type>error</type>
+		<message>検索条件値のフォーマットが正しくありません。</message>
+	</error>
+	<error code="GES-100017">
+		<type>error</type>
+		<message>ファイルの出力形式が選択されていません。</message>
+	</error>
+	<error code="GES-100018">
+		<type>error</type>
+		<message>検索結果が制限値を超えています。</message>
+	</error>
+	<error code="GES-100019">
+		<type>error</type>
+		<message>文字列型以外には曖昧検索は利用できません</message>
+	</error>
+	<error code="SMP-000001">
+		<type>error</type>
+		<message>1-99の間で入力してください。</message>
+	</error>
+	<error code="SMP-000002">
+		<type>error</type>
+		<message>明細行がありません。</message>
+	</error>
+	<error code="SMP-000003">
+		<type>error</type>
+		<message>選択チェックボックスを選択してください。</message>
+	</error>
+	<error code="SMP-000004">
+		<type>error</type>
+		<message>商品コード、発注数、単価、納期は必ず入力してください。</message>
+	</error>
+	<error code="SMP-000006">
+		<type>error</type>
+		<message>この項目は必須入力です。</message>
+	</error>
+	<error code="SMP-000007">
+		<type>error</type>
+		<message>開始日には停止日より以前の日付を入力してください。</message>
+	</error>
+	<error code="SMP-000008">
+		<type>error</type>
+		<message>商品コードに該当する商品がありません。</message>
+	</error>
+	<error code="SMP-002001">
+		<type>error</type>
+		<message>二重取込のため、指定したファイルをアップロードできません。</message>
+	</error>
+	<error code="SMP-002002">
+		<type>error</type>
+		<message>インポートタスク情報が存在しません。</message>
+	</error>
+	<error code="SMP-002003">
+		<type>error</type>
+		<message>取込先テーブルに既に存在しています。</message>
+	</error>
+	<error code="SMP-002004">
+		<type>error</type>
+		<message>インポートファイルを指定してください。</message>
+	</error>
+	<error code="SMP-002005">
+		<type>error</type>
+		<message>インポートファイルが空のため、指定したファイルをアップロードできません。</message>
+	</error>
+	<error code="SMP-002006">
+		<type>error</type>
+		<message>{0}行目：DBアクセスエラーが発生しました。</message>
+	</error>
+	<error code="SMP-009001">
+		<type>error</type>
+		<message>User IDがロックされています。</message>
+	</error>
+	<error code="SMP-009002">
+		<type>error</type>
+		<message>ロールバック処理でエラー.</message>
+	</error>
+	<error code="SMP-009003">
+		<type>error</type>
+		<message>DB接続の解放処理でエラー.</message>
+	</error>
+	<error code="SMP-009004">
+		<type>error</type>
+		<message>該当レコードなし！.</message>
+	</error>
+	<error code="SMP-009005">
+		<type>error</type>
+		<message>終了値 > 現在値 + 増分値 の場合はエラーです.</message>
+	</error>
+	<error code="SMP-010001">
+		<type>error</type>
+		<message>日付（TO）は日付（FROM）より後の日付を入力して下さい</message>
+	</error>
+	<error code="SMP-010002">
+		<type>error</type>
+		<message>商品マスタ整理が終了しました。</message>
+	</error>
+	<error code="SMP-010003">
+		<type>error</type>
+		<message>商品マスタ整理が異常終了しました。</message>
+	</error>
+	<error code="SMP-010004">
+		<type>error</type>
+		<message>商品マスタ整理のスケジュール登録に失敗しました。</message>
+	</error>
+	<error code="SMP-010005">
+		<type>error</type>
+		<message>ジョブスケジュールが選択されていません。</message>
+	</error>
+	<error code="SMP-010006">
+		<type>error</type>
+		<message>曜日が選択されていません。</message>
+	</error>
+</error-messages>

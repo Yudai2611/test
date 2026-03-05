@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          ">
+
+	<!-- ###########################
+                gef-em
+         ########################### -->
+
+	<bean name="jp.co.kccs.greenearth.framework.em.zoom.GAccountZoomDaoFactory" class="jp.co.kccs.greenearth.framework.em.zoom.GAccountZoomDaoFactory" scope="request" >
+		<constructor-arg>
+			<ref bean="jp.co.kccs.greenearth.framework.em.zoom.GUserZoomDao" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="jp.co.kccs.greenearth.framework.em.zoom.GGroupZoomDaoMap" />
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.em.rolemanager.GRoleManagementService" class="jp.co.kccs.greenearth.framework.em.rolemanager.GRoleManagementServiceImpl" scope="singleton">
+		<constructor-arg>
+			<bean class="jp.co.kccs.greenearth.framework.em.rolemanager.GRoleTransporterImpl" />
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="jp.co.kccs.greenearth.framework.em.rolemanager.GRoleBatchEditorImpl" >
+				<constructor-arg><value>/RoleExportTemplate.xls</value></constructor-arg>
+				<constructor-arg><value>255</value></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.em.menumanager.GMenuManagementService" class="jp.co.kccs.greenearth.framework.em.menumanager.GMenuManagementServiceImpl" scope="singleton">
+		<constructor-arg>
+			<bean class="jp.co.kccs.greenearth.framework.em.menumanager.GMenuTransporterImpl" />
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="jp.co.kccs.greenearth.framework.em.menumanager.GMenuBatchEditorImpl" >
+				<constructor-arg><value>/MenuExportTemplate.xls</value></constructor-arg>
+				<constructor-arg><value>255</value></constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.auth.GCompanyDao" class="jp.co.kccs.greenearth.framework.auth.GCompanyDaoImpl" scope="request" />
+	<bean name="jp.co.kccs.greenearth.framework.em.zoom.GGroupZoomDao.Organization" class="jp.co.kccs.greenearth.framework.em.zoom.GOrganizationZoomDaoImpl" scope="request" >
+		<constructor-arg>
+			<ref bean="jp.co.kccs.greenearth.framework.auth.GCompanyDao" />
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.em.zoom.GGroupZoomDao.Rank" class="jp.co.kccs.greenearth.framework.em.zoom.GEmploymentRankZoomDaoImpl" scope="request" >
+		<constructor-arg>
+			<ref bean="jp.co.kccs.greenearth.framework.auth.GCompanyDao" />
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.em.zoom.GGroupZoomDaoMap" class="java.util.HashMap" scope="request">
+		<constructor-arg>
+			<map>
+				<entry key="Organization">
+					<ref bean="jp.co.kccs.greenearth.framework.em.zoom.GGroupZoomDao.Organization" />
+				</entry>
+				<entry key="Rank">
+					<ref bean="jp.co.kccs.greenearth.framework.em.zoom.GGroupZoomDao.Rank" />
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.em.zoom.GUserZoomDao" class="jp.co.kccs.greenearth.framework.em.zoom.GUserZoomDaoImpl" scope="request">
+		<constructor-arg>
+			<ref bean="jp.co.kccs.greenearth.framework.auth.GCompanyDao"/>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="jp.co.kccs.greenearth.framework.em.zoom.GGroupZoomDaoMap"/>
+		</constructor-arg>
+	</bean>
+</beans>

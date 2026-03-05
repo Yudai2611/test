@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entity phyName="GEMenu" database="MainDataSource">
+	<Columns>
+		<Column name="ObjectID" phyName="ObjectID" type="Char" size="36" />
+		<Column name="CompanyCode" phyName="CompanyCode" type="Varchar" size="5" />
+		<Column name="MenuID" phyName="MenuID" type="Varchar" size="50" />
+		<Column name="DisplayNameResourceID" phyName="DisplayNameResourceID" type="Char" size="36" />
+		<Column name="ParentMenuObjectID" phyName="ParentMenuObjectID" type="Char" size="36" />
+		<Column name="ApplicationType" phyName="ApplicationType" type="Varchar" size="50" />
+		<Column name="MenuType" phyName="MenuType" type="Varchar" size="50" />
+		<Column name="StartModule" phyName="StartModule" type="Varchar" size="255" />
+		<Column name="Parameter" phyName="Parameter" type="Varchar" size="255" />
+		<Column name="IsItem" phyName="IsItem" type="Numeric" size="1" />
+		<Column name="Status" phyName="Status" type="Numeric" size="1" />
+		<Column name="RoleObjectID" phyName="RoleObjectID" type="Char" size="36" />
+		<Column name="Description" phyName="Description" type="Varchar" size="255" />
+		<Column name="SortIndex" phyName="SortIndex" type="Numeric" size="4" />
+		<Column name="UpdatedDT" phyName="UpdatedDT" type="Timestamp" />
+		<Column name="UpdatedPerson" phyName="UpdatedPerson" type="Varchar" size="20" />
+		<Column name="ExclusiveFG" phyName="ExclusiveFG" type="Char" size="36" exclusiveKey="true" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="ObjectID" />
+	</PrimaryKey>
+	<UniqueKeys>
+		<UniqueKey name="UniquKey">
+			<ReferenceColumn refName="CompanyCode" />
+			<ReferenceColumn refName="MenuID" />
+		</UniqueKey>
+	</UniqueKeys>	
+	<ForeignKeys>
+		<ForeignKey name="ResourceKey" refEntity="GEMenuLocalizationResource">
+			<JoinColumn srcName="DisplayNameResourceID" refName="ResourceID" />
+			<JoinColumn srcName="CompanyCode" refName="CompanyCode" />
+		</ForeignKey>
+		<ForeignKey name="RoleKey" refEntity="GERole">
+			<JoinColumn srcName="RoleObjectID" refName="ObjectID" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

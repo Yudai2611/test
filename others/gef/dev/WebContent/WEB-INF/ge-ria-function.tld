@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<tlib-version>1.0</tlib-version>
+	<short-name>gf</short-name>
+	<uri>http://www.kccs.co.jp/geframe/ria/function/taglib</uri>
+	<function>
+		<description>Gets the context path.</description>
+		<name>ctxpath</name>
+		<function-class>jp.co.kccs.greenearth.framework.richview.ui.taglib.GELFunction</function-class>
+		<function-signature>java.lang.String ctxpath()</function-signature>
+		<example>${gf:ctxpath()}</example>
+	</function>
+	<function>
+		<description>Get resources from the specified ID.</description>
+		<name>resource</name>
+		<function-class>jp.co.kccs.greenearth.framework.richview.ui.taglib.GELFunction</function-class>
+		<function-signature>java.lang.String resource(java.lang.String)</function-signature>
+		<example>${gf:resource("id")}</example>
+	</function>
+	<function>
+		<description>Get resources from the specified ID.</description>
+		<name>resourceL</name>
+		<function-class>jp.co.kccs.greenearth.framework.richview.ui.taglib.GELFunction</function-class>
+		<function-signature>java.lang.String resourceL(java.lang.String,java.lang.String)</function-signature>
+		<example>${gf:resourceL("id","ja")}</example>
+	</function>
+</taglib>

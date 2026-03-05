@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="Batch_Job_Instance" database="MainDataSource">
+	<Columns>
+		<Column name="JobInstanceID" phyName="Job_Instance_ID" type="Long" size="19" />
+		<Column name="Version" phyName="Version" type="Long" size="19" />
+		<Column name="JobName" phyName="Job_Name" type="Varchar" size="100" />
+		<Column name="JobKey" phyName="Job_Key" type="Varchar" size="32" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="JobInstanceID" />
+	</PrimaryKey>
+	<UniqueKeys>
+		<UniqueKey name="JobInstKey">
+	    	<ReferenceColumn refName="JobName" />
+	    	<ReferenceColumn refName="JobKey" />
+		</UniqueKey>
+	</UniqueKeys>
+</Entity>

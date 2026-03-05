@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="ItemMaster" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="RegisteredPerson" phyName="RegisteredPerson" type="Varchar" size="20" />
+		<Column name="RegisteredDT" phyName="RegisteredDT" type="Date" />
+		<Column name="UpdatedPerson" phyName="UpdatedPerson" type="Varchar" size="20" />
+		<Column name="UpdatedDT" phyName="UpdatedDT" type="Date" />
+		<Column name="ExclusiveFG" phyName="ExclusiveFG" type="Varchar" size="32" exclusiveKey="true" />
+		<Column name="StartDT" phyName="StartDT" type="Date" />
+		<Column name="InvalidDT" phyName="InvalidDT" type="Date" />
+		<Column name="ItemCD" phyName="ItemCD" type="Varchar" size="15" />
+		<Column name="ItemNA" phyName="ItemNA" type="Varchar" size="50" />
+		<Column name="ItemNA_KANA" phyName="ItemNA_KANA" type="Varchar" size="20" />
+		<Column name="Standard" phyName="Standard" type="Varchar" size="20" />
+	 	<Column name="Unit" phyName="Unit" type="Varchar" size="3" />
+		<Column name="UnitPrice" phyName="UnitPrice" type="Numeric" size="12" scale="3" />
+		<Column name="StockFG" phyName="StockFG" type="Varchar" size="1" />
+		<Column name="InspectionFG" phyName="InspectionFG" type="Varchar" size="1" />
+		<Column name="StockQT" phyName="StockQT" type="Numeric" size="6" scale="0" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCD" />
+		<ReferenceColumn refName="ItemCD" />
+	</PrimaryKey>
+	<ForeignKeys>
+		<ForeignKey name="CompanyMasterReferenceKeyBind" refEntity="UnitMaster">
+			<JoinColumn srcName="CompanyCD" refName="CompanyCD" />
+			<JoinColumn srcName="Unit" refName="Code" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

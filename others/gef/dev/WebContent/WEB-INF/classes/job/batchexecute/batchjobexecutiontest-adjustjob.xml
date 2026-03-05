@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:batch="http://www.springframework.org/schema/batch"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/batch
+    http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+">
+	<bean id="jobListener" class="sample.ria.batchexecute.job.JobListener" />
+	<bean id="stepListener" class="sample.ria.batchexecute.job.StepListener" />
+	
+	<bean id="batchJobExecutionTestAdjustTask" class="sample.ria.batchexecute.job.BatchJobExecutionTestAdjustTasklet" />
+	
+	<batch:job id="batchExecute">
+		<batch:listeners>
+			<batch:listener ref="jobListener"/>
+	    </batch:listeners>
+		<batch:step id="step1">
+			<batch:tasklet ref="batchJobExecutionTestAdjustTask" transaction-manager="transactionManager">
+				<batch:listeners>
+					<batch:listener ref="stepListener"/>
+				</batch:listeners>
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+	
+</beans>

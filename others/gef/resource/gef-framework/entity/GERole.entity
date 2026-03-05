@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="GERole" database="MainDataSource">
+	<Columns>
+		<Column name="ObjectID" phyName="ObjectID" type="Char" size="36" />
+		<Column name="CompanyCode" phyName="CompanyCode" type="Varchar" size="5" />
+		<Column name="RoleID" phyName="RoleID" type="Varchar" size="50" />
+		<Column name="DisplayNameResourceID" phyName="DisplayNameResourceID" type="Char" size="36" />
+		<Column name="AuthoritySet" phyName="AuthoritySet" type="Varchar" size="1023" />
+		<Column name="Description" phyName="Description" type="Varchar" size="255" />
+		<Column name="UpdatedDate" phyName="UpdatedDT" type="Timestamp" />
+		<Column name="UpdatedPerson" phyName="UpdatedPerson" type="Varchar" size="20" />
+		<Column name="ExclusiveFG" phyName="ExclusiveFG" type="Char" size="36" exclusiveKey="true" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="ObjectID" />
+	</PrimaryKey>
+	<UniqueKeys>
+		<UniqueKey name="RoleUK">
+			<ReferenceColumn refName="CompanyCode" />
+			<ReferenceColumn refName="RoleID" />
+		</UniqueKey>
+	</UniqueKeys>
+	<ForeignKeys>
+		<ForeignKey name="ResourceFK" refEntity="GERoleLocalizationResource">
+			<JoinColumn srcName="DisplayNameResourceID" refName="ResourceID" />
+			<JoinColumn srcName="CompanyCode" refName="CompanyCode" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

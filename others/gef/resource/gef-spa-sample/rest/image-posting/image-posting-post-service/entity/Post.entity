@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="post_master" database="MainDataSource">
+	<Columns>
+		<Column name="PostId" phyName="post_id" type="Varchar" size="36" />
+		<Column name="PostDetail" phyName="post_detail" type="Varchar" size="100" />
+		<Column name="CreatedBy" phyName="created_by" type="Varchar" size="36" />
+		<Column name="CreatedAt" phyName="created_at" type="Date" />
+		<Column name="UpdatedAt" phyName="updated_at" type="Date" />
+		<Column name="PostFile" phyName="post_file" type="Blob" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="PostId" />
+	</PrimaryKey>
+	<ForeignKeys>
+		<ForeignKey name="FkPostCreatedBy" refEntity="UserProfile">
+			<JoinColumn srcName="CreatedBy" refName="UserId" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

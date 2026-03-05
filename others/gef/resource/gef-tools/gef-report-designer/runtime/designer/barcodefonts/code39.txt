@@ -1,0 +1,35 @@
+Subject: Re: Code 39 bar code font
+Date: Wed, 21 Nov 2001 08:23:01 -0700
+From: "Clancy" <clancy@clancysystems.com>
+To: "Bruno Lowagie" <bruno.lowagie@rug.ac.be>
+
+Bruno,
+
+No charge, no license fee, FREE.
+
+Sorry but the code 39 font produces code 39 bar codes
+EAN bar codes are something else.
+
+Call me if you need any help.
+
+Stan Wolfson
+303-759-4276
+
+----- Original Message -----
+From: "Bruno Lowagie" <bruno.lowagie@rug.ac.be>
+To: <clancy@clancysystems.com>
+Sent: Wednesday, November 21, 2001 7:15 AM
+Subject: Code 39 bar code font
+
+> Hello,
+>
+> I just downloaded the file code39.ttf and I didn't find
+> any information about the license for this font. Is it
+> free? Can I ship it with my Open Source product?
+>
+> A second question: I am a newbie concerning codebars,
+> so this may be a very stupid question: can code39.ttf
+> be used to generate EAN codebars?
+>
+> kind regards,
+> Bruno

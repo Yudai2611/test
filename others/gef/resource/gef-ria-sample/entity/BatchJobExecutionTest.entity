@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="BATCH_JOB_EXECUTION_TEST" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="JobTestCD" phyName="JobTestCD" type="Varchar" size="15" />
+		<Column name="Field1" phyName="Field1" type="Varchar" size="20" />
+		<Column name="Field2" phyName="Field2" type="Varchar" size="20" />
+		<Column name="UpdatedDT" phyName="UpdatedDT" type="Date" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCD" />
+		<ReferenceColumn refName="JobTestCD" />
+	</PrimaryKey>
+</Entity>

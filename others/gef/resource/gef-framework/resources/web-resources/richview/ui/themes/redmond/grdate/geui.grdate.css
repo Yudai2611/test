@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+/* Copyright 2011 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA geui.grerrorprovider コンポーネント
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @author yamashita 2011/06/25
+ * @since 3.9.0
+ */
+/***********************************************/
+/* geui.grdate*/
+/***********************************************/
+.geui-grdate {}
+.geui-grdate-readonly{
+	 background-image: none;
+	 background-color: #f7f7f7;
+}
+.geui-grdate-label{}
+.geui-grdate-disabled{}

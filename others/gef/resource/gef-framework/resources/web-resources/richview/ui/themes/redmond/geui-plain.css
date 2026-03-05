@@ -1,0 +1,188 @@
+@CHARSET "UTF-8";
+/* Copyright 2018- Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @author H.Nishida 2011/06/17
+ * @since 3.9.0
+ */
+/*#############################################*/
+/* ge-richview-plain*/
+/*#############################################*/
+/***********************************************/
+/* GPBodyTag用*/
+/***********************************************/
+.geui-gpbody { color:black; font-size:13px; }
+/***********************************************/
+/* GPAnchorTag用*/
+/***********************************************/
+.geui-gpanchor {}
+a:link.geui-gpanchor { color: #323299; }
+a:visited.geui-gpanchor { color: #000080; }
+a:hover.geui-gpanchor, a:active.geui-gpanchor { color: #C71585; }
+/***********************************************/
+/* GPDivTag用*/
+/***********************************************/
+.geui-gpdiv {}
+/***********************************************/
+/* GPSelectTag用*/
+/***********************************************/
+.geui-gpselect { background-color: white; }
+.geui-gpselect-readonly { opacity: 0.35; }
+.geui-gpselect-disabled { opacity: 0.35; }
+/***********************************************/
+/* GPOptionGroupTag用*/
+/***********************************************/
+.geui-gpoptiongroup {}
+.geui-gpoptiongroup-disabled {}
+/***********************************************/
+/* GPOptionTag用*/
+/***********************************************/
+.geui-gpoption {}
+.geui-gpoption-disabled {}
+/***********************************************/
+/* GPImgTag用*/
+/***********************************************/
+.geui-gpimg {}
+.geui-gpimg-disabled {}
+a .geui-gpimg {border: none;}
+/***********************************************/
+/* GPRadioTag用*/
+/***********************************************/
+.geui-gpradio {}
+.geui-gpradio-disabled {}
+@-moz-document url-prefix() {
+	.geui-gpradio:focus { outline: 1px dotted !important; }
+}
+/***********************************************/
+/* GPTextTag用*/
+/***********************************************/
+.geui-gptext {}
+.geui-gptext-readonly { background-image: none; background-color: #f7f7f7; }
+.geui-gptext-disabled {}
+/***********************************************/
+/* GPLabelTag用*/
+/***********************************************/
+.geui-gplabel {}
+.geui-gplabel-disabled {}
+.geui-gplabel-multiline {white-space: pre; }
+/***********************************************/
+/* GPList用*/
+/***********************************************/
+.geui-gplist { border-collapse: collapse; white-space: nowrap; padding: 1px; }
+.geui-gplist tr.ui-state-default, .geui-gplist td.ui-state-default { background-image: none !important; }
+.geui-gplist .geui-gplist-caption {}
+.geui-gplist .geui-gplist-header {}
+.geui-gplist .geui-gplist-header .geui-gplist-header-cell { background-color:#DFEFFC; }
+.geui-gplist .geui-gplist-row {}
+.geui-gplist .geui-gplist-row .geui-gplist-odd-row td { background-color:#FAFDFF !important; }
+.geui-gplist .geui-gplist-row .geui-gplist-even-row td { background-color:#F7FBFD !important; }
+.geui-gplist .geui-gplist-row .geui-gplist-body-cell { background-color:#FAFDFF !important; }
+.geui-gplist .geui-gplist-row .geui-gplist-numbercell {}
+.geui-gplist .geui-gplist-row .geui-gplist-linkednumbercell {}
+.geui-gplist .geui-gplist-row .geui-gplist-linkednumbercell-link {}
+a:link.geui-gplist-linkednumbercell-link { color: #323299; }
+a:visited.geui-gplist-linkednumbercell-link { color: #000080; }
+a:hover.geui-gplist-linkednumbercell-link, a:active.geui-gplist-linkednumbercell-link { color: #C71585; }
+.geui-gplist .geui-gplist-footer {}
+.geui-gplist .geui-gplist-footer .geui-gplist-footer-cell { background-color:#DFEFFC; }
+
+.geui-gplist-pager {}
+.geui-gplist-pager .geui-gplist-pagination .geui-gplist-currentpage { cursor: default; color: #f89be6; font-weight: bold; }
+.geui-gplist-pager .geui-gplist-pagination .geui-gplist-pagelink { cursor: pointer; margin-left:2px; width: 14px; margin-right:2px; color: inherit; text-decoration: inherit;}
+.geui-gplist-pager .geui-gplist-pagination .geui-gplist-pagelink:hover { text-decoration:underline; color: pink; }
+.geui-gplist-pager .geui-gplist-splitter {}
+
+.geui-gplsit-block {}
+.geui-gplist-block .geui-gplist-hscrollblock        { margin:0px; padding:0px; border:none; overflow-y:hidden; overflow-x:scroll; }
+.geui-gplist-block .geui-gplist-caption-scrollblock { margin:0px; padding:0px; border:none; overflow-y:hidden; overflow-x:hidden; }
+.geui-gplist-block .geui-gplist-caption-table {}
+.geui-gplist-block .geui-gplist-header-scrollblock { margin:0px; padding:0px; border:none; overflow-y:hidden; overflow-x:hidden; }
+.geui-gplist-block .geui-gplist-header-scrollblock .geui-gplist-header-table { word-break:break-all; word-wrap:break-word; }
+.geui-gplist-block .geui-gplist-header-scrollblock .geui-gplist-header-table td { white-space:normal; }
+.geui-gplist-block .geui-gplist-row-scrollblock    { margin:0px; padding:0px; border:none; overflow-y:scroll; overflow-x:hidden;}
+.geui-gplist-block .geui-gplist-row-scrollblock    .geui-gplist-row-table { word-break:break-all; word-wrap:break-word; }
+.geui-gplist-block .geui-gplist-row-scrollblock    .geui-gplist-row-table td { white-space:normal; }
+.geui-gplist-block .geui-gplist-footer-scrollblock { margin:0px; padding:0px; border:none; overflow-y:hidden; overflow-x:hidden; }
+.geui-gplist-block .geui-gplist-footer-scrollblock .geui-gplist-footer-table { word-break:break-all; word-wrap:break-word; }
+.geui-gplist-block .geui-gplist-footer-scrollblock .geui-gplist-footer-table td { white-space:normal; }
+.geui-gplist-block .geui-gplist-hscrollbar         { margin:0px; padding:0px; border:none; overflow-y:hidden; overflow-x:scroll; }
+.geui-gplist-block .geui-gplist-hscrollbar .geui-gplist-hscrollbar-content { margin:0px; padding:0px; border:none; }
+/* tableの罫線が消えるfirefoxのバグに対処。firefoxのみに適用させる。 */
+@-moz-document url-prefix() {
+	.geui-gplist {
+		background-color: #c5dbec !important;
+	}
+	.geui-gplist-caption, .geui-gplist-header-cell, .geui-gplist-row-cell, .geui-gplist-footer-cell {
+		background-clip: padding-box !important;
+	}
+ }
+/***********************************************/
+/* GPCheckBox用*/
+/***********************************************/
+.geui-gpcheckbox {}
+.geui-gpcheckbox-readonly {}
+.geui-gpcheckbox-disabled {}
+/***********************************************/
+/* GPButton用*/
+/***********************************************/
+.geui-gpbutton {}
+.geui-gpbutton-disabled {}
+.geui-gpbutton:focus { border: 1px solid #79b7e7; background: #d0e5f5 url("lib/jqueryui/images/ui-bg_glass_75_d0e5f5_1x400.png") 50% 50% repeat-x; color: #1d5987; }
+/***********************************************/
+/* GPTextarea用*/
+/***********************************************/
+.geui-gptextarea {}
+.geui-gptextarea-readonly { background-image: none; background-color: #f7f7f7; }
+.geui-gptextarea-disabled {}
+/***********************************************/
+/* GPPassword用*/
+/***********************************************/
+.geui-gppassword {}
+.geui-gppassword-readonly { background-image: none; background-color: #f7f7f7; }
+.geui-gppassword-disabled {}
+/**********************************************************
+/* GPForm用*/
+/**********************************************************/
+.geui-gpform {}
+/***********************************************/
+/* GPRadioOption用*/
+/***********************************************/
+.geui-gpradiooption {}
+.geui-gpradiooption-readonly {}
+.geui-gpradiooption-disabled {}
+@-moz-document url-prefix() {
+	.geui-gpradiooption:focus { outline: 1px dotted !important; }
+}
+/***********************************************/
+/* GPLinkedLabel用*/
+/***********************************************/
+.geui-gplinkedlabel {}
+.geui-gplinkedlabel-disabled {}
+a:link.geui-gplinkedlabel { color: #323299; }
+a:visited.geui-gplinkedlabel { color: #000080; }
+a:hover.geui-gplinkedlabel, a:active.geui-gplinkedlabel { color: #C71585; }
+/***********************************************/
+/* GPMenuLinkedLabel用*/
+/***********************************************/
+.geui-gpmenulinkedlabel {}
+.geui-gpmenulinkedlabel-disabled {}
+a.geui-gpmenulinkedlabel , a:link.geui-gpmenulinkedlabel, a:visited.geui-gpmenulinkedlabel { text-decoration: underline; }
+a:link.geui-gpmenulinkedlabel { color: #323299; }
+a:visited.geui-gpmenulinkedlabel { color: #000080; }
+a:hover.geui-gpmenulinkedlabel, a:active.geui-gpmenulinkedlabel { color: #C71585; }
+/***********************************************/
+/* GPLinkedImg用*/
+/***********************************************/
+.geui-gplinkedimg{}
+.geui-gplinkedimg-disabled{}
+.geui-gplinkedimg-img{}
+a .geui-gplinkedimg-img{border: none;}
+.geui-gplinkedimg-img-disabled{}
+/***********************************************/
+/* GPErrorDialogAnchor用*/
+/***********************************************/
+.geui-gperrordialoganchor, .ui-widget .geui-gperrordialoganchor { font-size: large; font-weight: bold; color: blue }

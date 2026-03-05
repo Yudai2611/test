@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          ">
+
+    <!-- ########################### gef-spa ########################### -->
+    <bean
+        name="jp.co.kccs.greenearth.framework.web.security.context.GSubjectHolderProvider"
+        class="jp.co.kccs.greenearth.framework.web.security.context.GSubjectHolderProviderImpl"
+        scope="singleton">
+    </bean>
+    <bean
+        name="jp.co.kccs.greenearth.framework.web.security.context.GSubjectHolderResolver"
+        class="jp.co.kccs.greenearth.framework.web.security.context.GSubjectHolderResolverImpl"
+        scope="singleton">
+    </bean>
+    <bean
+        name="jp.co.kccs.greenearth.framework.web.security.csrf.GCsrfRepositoryProvider"
+        class="jp.co.kccs.greenearth.framework.web.security.csrf.GCsrfRepositoryProviderImpl"
+        scope="singleton">
+    </bean>
+    <bean
+        name="jp.co.kccs.greenearth.framework.web.security.csrf.GCsrfRepositoryResolver"
+        class="jp.co.kccs.greenearth.framework.web.security.csrf.GCsrfRepositoryResolverImpl"
+        scope="singleton">
+    </bean>
+    <!--JAVA CONFIG -->
+    <!-- <bean name="jp.co.kccs.greenearth.framework.web.security.rule.configuration.GSecurityConfigurationCreator"
+          class="jp.co.kccs.greenearth.framework.web.security.rule.configuration.java.GSecurityConfigurationJavaCreator"
+          scope="singleton">
+    </bean> -->
+    <!-- YAML CONFIG -->
+   <bean
+       name="jp.co.kccs.greenearth.framework.web.security.rule.configuration.GSecurityConfigurationCreator"
+       class="jp.co.kccs.greenearth.framework.web.security.rule.configuration.file.yaml.GSecurityConfigurationYamlCreator"
+       scope="singleton">
+       <constructor-arg>
+           <value>security-rule.yaml</value>
+       </constructor-arg>
+   </bean>
+    <bean
+            name="jp.co.kccs.greenearth.framework.web.security.auth.GSubject"
+            class="jp.co.kccs.greenearth.framework.web.security.auth.GSubjectImpl"
+            scope="prototype" />
+
+    <bean
+            name="jp.co.kccs.greenearth.framework.web.security.filter.GSecurityFilterChainProxyConfiguratorProvider"
+            class="jp.co.kccs.greenearth.framework.web.security.filter.GSecurityFilterChainProxyConfiguratorProviderImpl"
+            scope="singleton"/>
+</beans>

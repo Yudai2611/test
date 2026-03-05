@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="comment_master" database="MainDataSource">
+	<Columns>
+		<Column name="CommentId" phyName="comment_id" type="Varchar" size="36" />
+		<Column name="PostId" phyName="post_id" type="Varchar" size="100" />
+		<Column name="CommentText" phyName="comment_text" type="Varchar" size="100" />
+		<Column name="CreatedBy" phyName="created_by" type="Varchar" size="36" />
+		<Column name="CreatedAt" phyName="created_at" type="Date" />
+		<Column name="UpdatedAt" phyName="updated_at" type="Date" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CommentId" />
+	</PrimaryKey>
+	<ForeignKeys>
+		<ForeignKey name="FkCommentCreatedBy" refEntity="UserProfile">
+			<JoinColumn srcName="CreatedBy" refName="UserId" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

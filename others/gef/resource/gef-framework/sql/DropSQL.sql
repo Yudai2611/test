@@ -1,0 +1,10 @@
+Drop Table GEMenu;
+Drop Table GEMenuLocalizationResource;
+Drop Table GERole;
+Drop Table GERoleLocalizationResource;
+Drop Table CompanyMaster;
+Drop Table EmploymentRankMaster;
+Drop Table OrganizationMaster;
+Drop Table UserMaster;
+Drop Table UserOrganizationMap;
+Drop Table UserRankMap;

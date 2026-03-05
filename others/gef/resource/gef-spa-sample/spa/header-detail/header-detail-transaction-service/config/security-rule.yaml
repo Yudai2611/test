@@ -1,0 +1,54 @@
+cors:
+  - id: "cors1"
+    allowMethods:
+      - POST
+      - GET
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+      - HEAD
+    allowOrigins:
+      - http://localhost:5173
+    allowHeaders:
+      - Authorization
+      - X-Action-Bean
+      - X-Action-Method
+      - X-Csrf-Token
+      - X-Requested-By
+      - Content-Type
+    allowCredentials: true
+    maxAge: -1
+    exposeHeaders:
+      - Authorization
+      - X-Csrf-Token
+      - X-Requested-By
+      - Content-Type
+      - Csrf_token
+      - Content-Disposition
+
+rules:
+  - patterns:
+      - uri: "*.spa-action"
+    authentication:
+      excludes:
+        - actionBean: sample.spa.action.AuthenticationAction
+          actionMethod:
+            - login
+      processor:
+        - jp.co.kccs.greenearth.framework.web.security.auth.GStandardBodyAuthenticationProcessor
+    csrf:
+      excludes:
+        - actionBean: sample.spa.action.AuthenticationAction
+          actionMethod:
+            - login
+      repository:
+        sessionRepository:
+      tokenIssuance:
+        patterns:
+          - actionBean: CsrfTokenIssuanceAction
+            actionMethod:
+              - issuance
+    cors:
+      - config: "cors1"
+    contextHolder: session

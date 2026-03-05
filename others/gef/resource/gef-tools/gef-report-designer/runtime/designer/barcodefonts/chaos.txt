@@ -1,0 +1,46 @@
+Subject: Re: barcodes
+Date: Wed, 21 Nov 2001 11:50:41 -0500
+From: "Daniel Lajeunesse" <dan@storm.ca>
+To: "Bruno Lowagie" <bruno@lowagie.com>
+
+Sure, no problem.
+
+Daniel Lajeunesse
+
+----- Original Message -----
+From: "Bruno Lowagie" <bruno.lowagie@rug.ac.be>
+To: <dan@storm.ca>
+Sent: Wednesday, November 21, 2001 8:17 AM
+Subject: barcodes
+
+> Hello,
+>
+> my name is Bruno Lowagie, I work for Ghent University and
+> I am the initial developer of iText, a JAVA-PDF library
+> (see http://itext.sourceforge.net/ ).
+>
+> My library is free (published under LGPL) and can be used
+> to create all sorts of documents (mainly PDF).
+>
+> Lots of users ask me questions about Barcodes and Barcode
+> fonts, so I was thinking of writing a specific 'barcode'
+> class in my library.
+>
+> For this I am looking for free barcode fonts.
+> I found yours and I liked your work very much, but
+> I don't know if I can use them.
+>
+> iText is not a commercial product; I don't earn any
+> money developing it. Is there some way I can ship your
+> fonts with a free iText distribution without having to
+> pay the fee.
+>
+> I think there are about 50 developers who have contributed
+> to iText up til now and they are all mentioned in the
+> source code. If necessary we can look for a solution, so
+> that you can benefit from a cooperation. Otherwise I will
+> have to look further.
+>
+> kind regards,
+> Bruno
+>

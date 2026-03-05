@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="UnitMaster" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="RegisteredPerson" phyName="RegisteredPerson" type="Varchar" size="20" />
+		<Column name="RegisteredDT" phyName="RegisteredDT" type="Date" />
+		<Column name="UpdatedPerson" phyName="UpdatedPerson" type="Varchar" size="20" />
+		<Column name="UpdatedDT" phyName="UpdatedDT" type="Date" />
+		<Column name="ExclusiveFG" phyName="ExclusiveFG" type="Varchar" size="32" exclusiveKey="true" />
+		<Column name="Code" phyName="Code" type="Varchar" size="3" />
+		<Column name="Name" phyName="Name" type="Varchar" size="20" />
+	</Columns>
+</Entity>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entity phyName="OrderDetail" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="RegisteredPerson" phyName="RegisteredPerson" type="Varchar" size="20" />
+		<Column name="RegisteredDT" phyName="RegisteredDT" type="Date" generate="RegisteredDate" />
+		<Column name="UpdatedPerson" phyName="UpdatedPerson" type="Varchar" size="20" />
+		<Column name="UpdatedDT" phyName="UpdatedDT" type="Date" generate="UpdatedDate" />
+		<Column name="ExclusiveFG" phyName="ExclusiveFG" type="Varchar" size="32" exclusiveKey="true" />
+		<Column name="SlipNO" phyName="SlipNO" type="Varchar" size="15" />
+		<Column name="DetailNo" phyName="DetailNo" type="Numeric" size="3" />
+		<Column name="ItemCD_0" phyName="ItemCD" type="VARCHAR" size="15" />
+		<Column name="OrderQT" phyName="OrderQT" type="Numeric" size="6" />
+		<Column name="UnitPrice" phyName="UnitPrice" type="Numeric" size="15" scale="3" />
+		<Column name="OrderAT" phyName="OrderAT" type="Numeric" size="12" />
+		<Column name="StockFG" phyName="StockFG" type="VARCHAR" size="1" />
+		<Column name="InspectionFG" phyName="InspectionFG" type="VARCHAR" size="1" />
+		<Column name="DeliveryDT" phyName="DeliveryDT" type="Date" />
+		<Column name="Remark" phyName="Remark" type="VARCHAR" size="100" />
+		<Column name="DetailID" phyName="DetailID" type="VARCHAR" size="32" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCD" />
+		<ReferenceColumn refName="SlipNO" />
+		<ReferenceColumn refName="DetailNo" />
+	</PrimaryKey>
+	<UniqueKeys>
+		<UniqueKey name="DetailIDKey">
+			<ReferenceColumn refName="CompanyCD" />
+			<ReferenceColumn refName="DetailID" />
+		</UniqueKey>
+	</UniqueKeys>
+	<ForeignKeys>
+		<ForeignKey name="ItemMasterReferenceKey" refEntity="ItemMaster">
+			<JoinColumn srcName="CompanyCD" refName="CompanyCD" />
+			<JoinColumn srcName="ItemCD_0" refName="ItemCD" />
+		</ForeignKey>
+	</ForeignKeys>
+</Entity>

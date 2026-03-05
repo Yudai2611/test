@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+/* Copyright 2011 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA geui.grimgindicator コンポーネント
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @author yamashita 2011/06/25
+ * @since 3.9.0
+ */
+/***********************************************/
+/* geui.grimgindicator*/
+/***********************************************/
+.geui-grimgindicator { z-index: 1000; }
+.geui-grimgindicator-img{}

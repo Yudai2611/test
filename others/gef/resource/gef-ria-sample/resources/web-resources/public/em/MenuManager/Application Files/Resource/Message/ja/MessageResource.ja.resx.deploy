@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApplicationType" xml:space="preserve">
+    <value>アプリケーションタイプ</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="AuthoritySet" xml:space="preserve">
+    <value>権限集合</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="CompanyCode" xml:space="preserve">
+    <value>会社コード</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>備考</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="DisplayNameResourceID" xml:space="preserve">
+    <value>表示名</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="EPM-000000" xml:space="preserve">
+    <value>ログインしました。</value>
+    <comment>仮Login用なので、削除します。</comment>
+  </data>
+  <data name="EPM-000001" xml:space="preserve">
+    <value>終了します。よろしいですか。</value>
+  </data>
+  <data name="EPM-000002" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="EPM-000003" xml:space="preserve">
+    <value>Exportが完了しました。</value>
+  </data>
+  <data name="EPM-000004" xml:space="preserve">
+    <value>Importが完了しました。</value>
+  </data>
+  <data name="EPM-000005" xml:space="preserve">
+    <value>件削除します。よろしいですか。</value>
+  </data>
+  <data name="EPM-000006" xml:space="preserve">
+    <value>該当するデータがありません。</value>
+  </data>
+  <data name="EPM-000007" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="EPM-000008" xml:space="preserve">
+    <value>既に追加されています。</value>
+  </data>
+  <data name="EPM-000009" xml:space="preserve">
+    <value>１件のメニュー情報を選択してください。</value>
+  </data>
+  <data name="EPM-000010" xml:space="preserve">
+    <value>指定されたメニューがみつかりません</value>
+  </data>
+  <data name="EPM-000011" xml:space="preserve">
+    <value>ファイルのフォーマットが違います。</value>
+  </data>
+  <data name="EPM-000012" xml:space="preserve">
+    <value>ツリービュー選択</value>
+  </data>
+  <data name="EPM-000013" xml:space="preserve">
+    <value>リストビュー選択</value>
+  </data>
+  <data name="EPM-000014" xml:space="preserve">
+    <value>TargetGroupを選択してください。</value>
+  </data>
+  <data name="EPM-000015" xml:space="preserve">
+    <value>予期せぬエラーが発生しました。管理者に連絡してください。</value>
+  </data>
+  <data name="EPM-000016" xml:space="preserve">
+    <value>エラーコード</value>
+  </data>
+  <data name="EPM-000017" xml:space="preserve">
+    <value>エラーメッセージ</value>
+  </data>
+  <data name="EPM-000018" xml:space="preserve">
+    <value>エラータイプ</value>
+  </data>
+  <data name="EPM-000019" xml:space="preserve">
+    <value>エラー詳細</value>
+  </data>
+  <data name="EPM-000020" xml:space="preserve">
+    <value>ロール情報が存在しません</value>
+  </data>
+  <data name="EPM-000021" xml:space="preserve">
+    <value>ロール参照</value>
+  </data>
+  <data name="EPM-000022" xml:space="preserve">
+    <value>選択されたメニューは既に存在していません。</value>
+  </data>
+  <data name="EPM-000023" xml:space="preserve">
+    <value>最新状態に更新してください。</value>
+  </data>
+  <data name="EPM-000024" xml:space="preserve">
+    <value>カテゴリを選択してください</value>
+  </data>
+  <data name="EPM-000025" xml:space="preserve">
+    <value>一つ以上のメニューを選択してください</value>
+  </data>
+  <data name="EPM-000026" xml:space="preserve">
+    <value>ファイルアクセスに失敗しました</value>
+  </data>
+  <data name="EPM-000027" xml:space="preserve">
+    <value>権限の変更はできません</value>
+  </data>
+  <data name="EPM-000028" xml:space="preserve">
+    <value>登録します。よろしいですか。</value>
+  </data>
+  <data name="EPM-000029" xml:space="preserve">
+    <value>更新します。よろしいですか。</value>
+  </data>
+  <data name="ExclusiveFG" xml:space="preserve">
+    <value>排他フラグ</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="IsItem" xml:space="preserve">
+    <value>アイテムフラグ</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="Locale" xml:space="preserve">
+    <value>ロケール</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="MenuID" xml:space="preserve">
+    <value>メニューID</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="MenuName" xml:space="preserve">
+    <value>メニュー名</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="MenuType" xml:space="preserve">
+    <value>メニュータイプ</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="ObjectID" xml:space="preserve">
+    <value>オブジェクトID</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>起動パラメータ</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="ParentMenuObjectID" xml:space="preserve">
+    <value>親メニューID</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="Resource" xml:space="preserve">
+    <value>リソース</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="ResourceID" xml:space="preserve">
+    <value>リソースID</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="RoleID" xml:space="preserve">
+    <value>ロールID</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>ロール名</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="RoleObjectID" xml:space="preserve">
+    <value>ロールオブジェクトID</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="SortIndex" xml:space="preserve">
+    <value>順番</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="StartModule" xml:space="preserve">
+    <value>起動モジュール</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状態</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="UpdatedDate" xml:space="preserve">
+    <value>更新日</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="UpdatedPerson" xml:space="preserve">
+    <value>更新者</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>値</value>
+    <comment>エラーダイアログの項目名で使用します。</comment>
+  </data>
+</root>

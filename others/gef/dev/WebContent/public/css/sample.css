@@ -1,0 +1,55 @@
+/**********************************************************
+	検索条件
+**********************************************************/
+TABLE.condition {
+	background-color:blue;
+	font-family: 'ＭＳ ゴシック';
+}
+
+TABLE.condition TR {
+	background-color:#FFFDDC;
+}
+
+TABLE.condition TD {
+	font-size:13px;
+	white-space:nowrap;
+}
+
+TABLE.condition .label {
+	background-color:#0088cc;
+	color:white;
+	font-size:13px;
+	width:130px;
+	height:22px;
+	white-space:nowrap;
+}
+
+/**********************************************************
+	無効行
+**********************************************************/
+TABLE.list TR.disabled_row {
+	background-color:#AAAAAA;
+}
+
+/**********************************************************
+	ポップアップ
+**********************************************************/
+INPUT.zoomOpen1{
+	font-weight: bold;
+	font-size: 12px;
+	color: red;
+	background-color: transparent;
+	text-align: center;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 65px;
+	height: 20px;
+}
+
+INPUT.button2{
+	text-align: center;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 20px;
+	height: 20px;
+}

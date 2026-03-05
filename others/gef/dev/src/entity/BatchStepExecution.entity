@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="Batch_Step_Execution" database="MainDataSource">
+	<Columns>
+		<Column name="StepID" phyName="Step_Execution_ID" type="Long" size="19" />
+		<Column name="Version" phyName="Version" type="Long" size="19" />
+		<Column name="StepName" phyName="Step_Name" type="Varchar" size="100" />
+		<Column name="JobID" phyName="Job_Execution_ID" type="Long" size="19" />
+		<Column name="StepStartDate" phyName="Start_Time" type="Date" />
+		<Column name="StepEndDate" phyName="End_Time" type="Date" />
+		<Column name="StepStatus" phyName="Status" type="Varchar" size="10" />
+		<Column name="CommitCount" phyName="Commit_Count" type="Long" size="19" />
+		<Column name="ReadCount" phyName="Read_Count" type="Long" size="19" />
+		<Column name="FilterCount" phyName="Filter_Count" type="Long" size="19" />
+		<Column name="StepUpdateCount" phyName="Write_Count" type="Long" size="19" />
+		<Column name="ReadSkipCount" phyName="Read_Skip_Count" type="Long" size="19" />
+		<Column name="WriteSkipCount" phyName="Write_Skip_Count" type="Long" size="19" />
+		<Column name="ProcessSkipCount" phyName="Process_Skip_Count" type="Long" size="19" />
+		<Column name="RollbackCount" phyName="Rollback_Count" type="Long" size="19" />
+		<Column name="ExitCode" phyName="Exit_Code" type="Varchar" size="2500" />
+		<Column name="StepExitMessage" phyName="Exit_Message" type="Varchar" size="2500" />
+		<Column name="LastUpdated" phyName="Last_Updated" type="Date" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="StepID" />
+	</PrimaryKey>
+</Entity>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="Batch_Job_Execution_Params" database="MainDataSource">
+	<Columns>
+		<Column name="JobID" phyName="Job_Execution_ID" type="Long" size="19" />
+		<Column name="TypeCD" phyName="Type_CD" type="Varchar" size="6" />
+		<Column name="KeyName" phyName="Key_Name" type="Varchar" size="100" />
+		<Column name="StringVAL" phyName="String_VAL" type="Varchar" size="250" />
+		<Column name="DateVAL" phyName="Date_VAL" type="Date" />
+		<Column name="LongVAL" phyName="Long_VAL" type="Long" size="19" />
+		<Column name="DoubleVAL" phyName="Double_VAL" type="Double" size="22" />
+		<Column name="Identifying" phyName="Identifying" type="Char" size="1" />
+	</Columns>
+</Entity>

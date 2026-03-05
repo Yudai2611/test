@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="HISTORY_IMPORT_CONDITION" database="MainDataSource">
+	<Columns>
+		<Column name="ApplicationId" phyName="application_id" type="Varchar" size="10" />
+		<Column name="HistoryId" phyName="history_id" type="Varchar" size="36"  />
+		<Column name="DatasourceId" phyName="datasource_id" type="Varchar" size="75"  />
+	</Columns>
+	<UniqueKeys>
+		<UniqueKey name="UkHistoryImportCondition">
+			<ReferenceColumn refName="ApplicationId" />
+			<ReferenceColumn refName="HistoryId" />
+		</UniqueKey>
+	</UniqueKeys>
+	<ForeignKeys>
+		<ForeignKey name="FkImportFields" refEntity="HISTORY_IMPORT_CONDITION_IMPORT_FIELD">
+			<JoinColumn srcName="ApplicationId" refName="ApplicationId" />
+			<JoinColumn srcName="HistoryId" refName="HistoryId" />
+		</ForeignKey>
+		<ForeignKey name="FkFilterFields" refEntity="HISTORY_IMPORT_CONDITION_FILTER_FIELD">
+            <JoinColumn srcName="ApplicationId" refName="ApplicationId" />
+            <JoinColumn srcName="HistoryId" refName="HistoryId" />
+        </ForeignKey>
+        <ForeignKey name="FkSortFields" refEntity="HISTORY_IMPORT_CONDITION_SORT_FIELD">
+            <JoinColumn srcName="ApplicationId" refName="ApplicationId" />
+            <JoinColumn srcName="HistoryId" refName="HistoryId" />
+        </ForeignKey>
+	</ForeignKeys>
+</Entity>

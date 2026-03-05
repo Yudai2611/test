@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+/* Copyright 2011-2015 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA geui.grerrorprovider コンポーネント
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @author yamashita 2011/06/25
+ * @since 3.9.0
+ */
+/***********************************************/
+/* geui.grerrordialog*/
+/***********************************************/
+.geui-grerrordialog {}
+.geui-grerrordialog .geui-grerrordialog-label { font-size: large; font-weight: bold; color: blue }
+.ui-dialog .geui-grerrordialog-content {}
+.ui-dialog .geui-grerrordialog-content-titlebar { background-color: #cc6600; background-image: none; border: medium none #cc6600; }

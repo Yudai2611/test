@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:batch="http://www.springframework.org/schema/batch"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:task="http://www.springframework.org/schema/task"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/batch
+    http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+    http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-4.3.xsd
+">
+ 	<!-- quartz job bean -->
+	<bean id="quartzJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="sample.ria.batchexecute.job.RunScheduler"/>
+		<property name="durability" value="true" /> <!-- Triggerなしで登録 -->
+		<property name="jobDataMap">
+			<map>
+				<entry key="jobName" value-ref="batchExecute"/>
+				<entry key="jobLauncher" value-ref="jobLauncher"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- quartz scheduler bean-->
+	<bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean ="quartzJob" />
+			</list>
+		</property>
+	</bean>
+	 
+	<!-- quartz Cron bean ※cron式は必須（valueﾌﾞﾗﾝｸもNG）であるため、CronTriggerImplｲﾝｽﾀﾝｽを業務側で作成するほうがよい.
+	<bean id="QuartzCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="cronExpression" value="0 */30 * * * ?" />
+	</bean>
+	 -->
+	 
+	 <import resource="classpath:/job/batchexecute/batchjobexecutiontest-adjustjob.xml" />
+</beans>

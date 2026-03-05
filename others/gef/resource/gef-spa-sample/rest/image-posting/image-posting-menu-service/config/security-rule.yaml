@@ -1,0 +1,35 @@
+cors:
+  - id: "cors1"
+    allowMethods:
+      - POST
+      - GET
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+      - HEAD
+    allowOrigins:
+      - http://localhost:5173
+    allowHeaders:
+      - Authorization
+      - X-Csrf-Token
+      - X-Requested-By
+      - Content-Type
+    allowCredentials: true
+    maxAge: -1
+    exposeHeaders:
+      - Authorization
+      - X-Csrf-Token
+      - X-Requested-By
+      - Content-Type
+      - Csrf_token
+      - Content-Disposition
+
+rules:
+  - patterns: 
+    - uri: "*"
+    authentication:
+      processor:
+        - sample.spa.JwtAuthenticationProcessor
+    cors:
+      - config: "cors1"

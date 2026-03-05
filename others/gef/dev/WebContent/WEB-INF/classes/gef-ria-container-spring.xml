@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+<!-- ###########################
+             gef-ria
+     ########################### -->
+
+	<!-- GActionParamDecoratorFactory -->
+	<bean name="jp.co.kccs.greenearth.framework.richview.ui.taglib.GActionParamDecoratorFactory" class="jp.co.kccs.greenearth.framework.richview.ui.taglib.GActionParamDecoratorFactory" scope="singleton">
+		<constructor-arg>
+			<map>
+				<entry key="grzoomdialog">
+					<bean class="jp.co.kccs.greenearth.framework.richview.rich.ui.control.dialog.taglib.GRZoomDialogActionParamDecorator"/>
+				</entry>
+				<entry key="gpmenulinkedlabel">
+					<bean class="jp.co.kccs.greenearth.framework.richview.ui.control.taglib.GPMenuLinkedLabelActionParamDecorator"/>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.richview.ui.taglib.GPatternEvaluatorFactory" class="jp.co.kccs.greenearth.framework.richview.ui.taglib.GPatternEvaluatorFactory" scope="singleton">
+		<constructor-arg>
+			<map>
+				<entry key="pfx">
+					<bean class="jp.co.kccs.greenearth.framework.richview.ui.taglib.GPrefixPatternEvaluator" />
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean name="jp.co.kccs.greenearth.framework.view.menu.GMenuStarterFactory" class="jp.co.kccs.greenearth.framework.view.menu.GMenuStarterFactory" scope="singleton">
+		<constructor-arg>
+			<map>
+				<entry key="RIAClientItem">
+					<bean class="jp.co.kccs.greenearth.framework.view.menu.GForwardMenuStarter"/>
+				</entry>
+				<entry key="ClickOnceItem">
+					<bean class="jp.co.kccs.greenearth.framework.view.menu.GClickOnceMenuStarter"/>
+				</entry>
+				<entry key="ExternalItem">
+					<bean class="jp.co.kccs.greenearth.framework.view.menu.GRedirectMenuStarter"/>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>

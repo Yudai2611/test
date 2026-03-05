@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          ">
+
+    <!-- ########################### gef-spa ########################### -->
+    <bean
+        name="sample.spa.usecase.CommentUsecase"
+        class="sample.spa.usecase.CommentUsecaseImpl"
+        scope="singleton">
+        <constructor-arg>
+            <bean name="sample.spa.usecase.repository.CommentRepository"
+                    class="sample.spa.repository.CommentRepositoryImpl"
+                    scope="singleton"/>
+        </constructor-arg>
+    </bean>
+    <bean
+            name="sample.spa.usecase.CompanyUsecase"
+            class="sample.spa.usecase.CompanyUsecaseImpl"
+            scope="singleton">
+        <constructor-arg>
+            <bean name="sample.spa.usecase.repository.CompanyRepository"
+                  class="sample.spa.repository.CompanyRepositoryImpl"
+                  scope="singleton"/>
+        </constructor-arg>
+    </bean>
+    <bean
+            name="sample.spa.usecase.PostUsecase"
+            class="sample.spa.usecase.PostUsecaseImpl"
+            scope="singleton">
+        <constructor-arg>
+            <bean name="sample.spa.usecase.repository.PostRepository"
+                  class="sample.spa.repository.PostRepositoryImpl"
+                  scope="singleton"/>
+        </constructor-arg>
+    </bean>
+    <bean
+            name="sample.spa.usecase.UserUsecase"
+            class="sample.spa.usecase.UserUsecaseImpl"
+            scope="singleton">
+        <constructor-arg>
+            <bean name="sample.spa.usecase.repository.UserRepository"
+                  class="sample.spa.repository.UserRepositoryImpl"
+                  scope="singleton"/>
+        </constructor-arg>
+    </bean>
+</beans>

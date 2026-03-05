@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Entity phyName="HISTORY_IMPORT_CONDITION_SORT_FIELD" database="MainDataSource">
+	<Columns>
+		<Column name="ApplicationId" phyName="application_id" type="Varchar" size="10" />
+		<Column name="HistoryId" phyName="history_id" type="Varchar" size="36"  />
+		<Column name="FieldId" phyName="field_id" type="Varchar" size="75"  />
+		<Column name="FieldIndex" phyName="field_index" type="Numeric" size="3" scale="0"  />
+		<Column name="SortOrder" phyName="sort_order" type="Varchar" size="4" />
+	</Columns>
+	<UniqueKeys>
+		<UniqueKey name="UkHistoryImportConditionSortField">
+			<ReferenceColumn refName="ApplicationId" />
+			<ReferenceColumn refName="HistoryId" />
+			<ReferenceColumn refName="FieldId" />
+		</UniqueKey>
+	</UniqueKeys>
+</Entity>

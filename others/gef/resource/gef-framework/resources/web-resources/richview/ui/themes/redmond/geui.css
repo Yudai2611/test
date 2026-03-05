@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+/* Copyright 2011-2013 Kyocera Communication Systems Co., Ltd All rights reserved.
+ *------------------------------------------------
+ * GreenEARTH Framework CSS Library
+ * RIA
+ * Theme : redmond
+ * ------------------------------------------------
+ *
+ * @author H.Nishida 2011/06/17
+ * @since 3.9.0
+ */
+
+/***********************************************/
+/* geui.css*/
+/***********************************************/
+.geui-errorlevel-error { background-image: none !important; background-color: mistyrose !important; }
+.geui-errorlevel-warn { background-image: none !important; background-color: lemonchiffon !important; }
+.geui-errorlevel-info { background-image: none !important; background-color: mintcream !important; }
+
+/***********************************************/
+/* text/textarea/passwordのplaceholder用  */
+/***********************************************/ 
+.geui-placeholder-container { text-align:left; display:inline-block; position:relative; }
+.geui-placeholder { text-align:left; position:absolute; top:4px; left:5px; overflow:hidden; height:70%; width:90%; font-size:100%; line-height:120%; color:#999;}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entity phyName="SNumbering" database="MainDataSource">
+	<Columns>
+		<Column name="CompanyCD" phyName="CompanyCD" type="Varchar" size="5" />
+		<Column name="RegisteredPerson" phyName="RegisteredPerson" type="Varchar" size="20" />
+		<Column name="RegisteredDT" phyName="RegisteredDT" type="Date" generate="RegisteredDate" />
+		<Column name="UpdatedPerson" phyName="UpdatedPerson" type="Varchar" size="20" />
+		<Column name="UpdatedDT" phyName="UpdatedDT" type="Date" generate="UpdatedDate" />
+		<Column name="ExclusiveFG" phyName="ExclusiveFG" type="Varchar" size="32" exclusiveKey="true" />
+		<Column name="Code" phyName="Code" type="Varchar" size="10" />
+		<Column name="Name" phyName="Name" type="VARCHAR" size="40" />
+		<Column name="ConstValue" phyName="ConstValue" type="VARCHAR" size="10" />
+		<Column name="StartValue" phyName="StartValue" type="Numeric" size="8" />
+		<Column name="EndValue" phyName="EndValue" type="Numeric" size="15" scale="8" />
+		<Column name="IncrementValue" phyName="IncrementValue" type="Numeric" size="8" />
+		<Column name="CurrentValue" phyName="CurrentValue" type="Numeric" size="8" />
+	</Columns>
+	<PrimaryKey>
+		<ReferenceColumn refName="CompanyCD" />
+		<ReferenceColumn refName="Code" />
+	</PrimaryKey>
+</Entity>

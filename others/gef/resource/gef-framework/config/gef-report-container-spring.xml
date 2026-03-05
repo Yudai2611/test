@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.0.xsd
+          ">
+
+<!-- ###########################
+          gef-report
+     ########################### -->
+
+	<bean id="jp.co.kccs.greenearth.report.repository.IRepositoryFactory" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdRepositoryFactory" scope="singleton" />
+	<bean id="jp.co.kccs.greenearth.report.repository.IControlBreakInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdControlBreakInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IReportSection" class="jp.co.kccs.greenearth.report.stdimpl.GStdReportSection" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.IImageInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdImageInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.ICircleInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdCircleInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.IRectangleInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdRectangleInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.ILineInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdLineInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.IFieldInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdFieldInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IReportImage" class="jp.co.kccs.greenearth.report.stdimpl.GStdReportImage" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IReportField" class="jp.co.kccs.greenearth.report.stdimpl.GStdReportField" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IReportCircle" class="jp.co.kccs.greenearth.report.stdimpl.GStdReportCircle" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IReportLine" class="jp.co.kccs.greenearth.report.stdimpl.GStdReportLine" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IReportRectangle" class="jp.co.kccs.greenearth.report.stdimpl.GStdReportRectangle" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IPlaceHolder" class="jp.co.kccs.greenearth.report.stdimpl.GStdPlaceHolder" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.IReportInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdReportInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.IControlBreakHandler" class="jp.co.kccs.greenearth.report.stdimpl.GStdControlBreakHandler" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.IMaxPageInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdMaxPageInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.ILineDashInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdLineDashInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.IBarcodeInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdBarcodeInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.repository.ISectionInfo" class="jp.co.kccs.greenearth.report.repository.stdimpl.GStdSectionInfo" scope="prototype" />
+	<bean id="jp.co.kccs.greenearth.report.ISectionElementGroup" class="jp.co.kccs.greenearth.report.stdimpl.GStdGroup" scope="prototype" />
+ 	<bean id="SeparatedFileList" class="jp.co.kccs.greenearth.report.dao.separatedfile.impl.GSeparatedFileList" scope="prototype" />
+	<bean id="FixedLengthList" class="jp.co.kccs.greenearth.report.dao.fixedlength.impl.GFixedLengthList" scope="prototype" />
+</beans>
